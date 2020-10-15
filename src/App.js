@@ -9,6 +9,7 @@ import HomePage from './pages/Home'
 import FaqPage from './pages/Faq'
 import ProfilePage from './pages/Profile'
 import ServicesPage from './pages/Services'
+import ServiceDetailPage from './pages/ServiceDetail'
 import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
 
@@ -31,6 +32,9 @@ function App() {
           <Route path="/login">
             <LoginPage />
           </Route>
+          <Route path="/services/:serviceId">
+            <ServiceDetailPage />
+          </Route>
           <Route path="/services">
             <ServicesPage />
           </Route>
@@ -50,3 +54,4 @@ function App() {
 }
 
 export default App;
+
