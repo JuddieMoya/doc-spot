@@ -2,11 +2,13 @@
 
 
 import React from 'react'
-import { connect } from 'react-redux' // HOC
-import Hero from 'components/Baseimg'
-import ServiceItem from 'components/service/ServiceItem'
+import { connect } from 'react-redux' 
+import Baseimg from '../components/Baseimg'
+import ServiceItem from '../components/service/ServiceItem'
 
-import { getServices } from 'store'
+
+
+import { fetchServices } from '../actions '
 
 class Home extends React.Component {
 
@@ -15,31 +17,36 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    const services = getServices()
-    this.setState({services})
+    this.props.dispatch(fetchServices())
+    
   }
+
 
   renderServices = (services) =>
     services.map(service => <ServiceItem key={service.id} service={service} />)
   
 
+  
+
   render() {
     const { services } = this.state
-    const { testingData, testingNumber } = this.props.test
+    const test = this.props.services
+    console.log(this.renderServices)
     return (
       <div>
-        <Hero />
+        <Baseimg />
         <section className="section section-feature-grey is-medium">
           <div className="container">
             <div className="title-wrapper has-text-centered">
-              <h2 className="title is-2"> We can Help </h2>
-              <h3 className="subtitle is-5 is-muted">Lets Get Started</h3>
+              <h2 className="title is-2">Great Power Comes </h2>
+              <h3 className="subtitle is-5 is-muted">With great Responsability</h3>
               <div className="divider is-centered"></div>
             </div>
 
             <div className="content-wrapper">
               <div className="columns">
-                { this.renderServices(services) }
+                { this.renderServices(this.props.services) }
+                
               </div>
             </div>
           </div>
@@ -49,8 +56,6 @@ class Home extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({test: state.service})
+const mapStateToProps = state => ({services: state.service.items})
     
 export default connect(mapStateToProps)(Home)
-
-
