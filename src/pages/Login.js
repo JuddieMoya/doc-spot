@@ -1,14 +1,21 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {useForm }from 'react-hook-form'
 import { useToasts } from 'react-toast-notifications'
 import { Redirect } from 'react-router-dom'
 
-import { login } from '../actions '
+import { login, storeAuthUser } from '../actions '
+import app from '../firebase/firebase'
+
 
 const Login = () => {
   const [ redirect, setRedirect ] = useState(false)
   const { register, handleSubmit } = useForm()
   const { addToast } = useToasts()
+  const [email, setEmail] = useState("");
+  const [password, setPass] = useState("");
+  const [loggedInUser, setUser] = useState(null);
+   
+  
 
   const onLogin = loginData => {
     login(loginData)
@@ -17,6 +24,41 @@ const Login = () => {
         errorMessage => addToast(errorMessage, { appearance: 'error', autoDismiss: true, autoDismissTimeout: 3000 })
       )
   }
+
+
+useEffect(()=> {
+  const authListener = app.auth().onAuthStateChanged(function (user){
+    setUser(user);
+    if (user) {
+      console.log(user);
+    } else {
+      console.log("User Logged Out");
+    }
+  });
+  return () => {
+    authListener();
+  };
+}, []);
+
+const registerUser = () => {
+  app
+  .auth()
+  .createUserWithEmailAndPassword(email, password)
+  .catch(function (error) {
+      // Handle Errors here.
+      alert(error);
+      // ...
+  });
+};
+
+const login = () => {
+  app
+  .auth()
+  .signInWithEmailAndPassword(email, password)
+  .catch(function (error) {
+      alert(error);
+  });
+};
 
   if (redirect) { return <Redirect to="/" />}
 
@@ -38,8 +80,10 @@ const Login = () => {
                     name="email"
                     className="input is-large"
                     type="email"
-                    placeholder="Your Email"
-                    autoComplete="email" />
+                    placeholder="Email"
+                    value={email}
+                    autoComplete="email" 
+                    onChange={(e)=> setEmail(e.target.value)}/>
                 </div>
               </div>
               <div className="field">
@@ -50,10 +94,13 @@ const Login = () => {
                     className="input is-large"
                     type="password"
                     placeholder="Your Password"
-                    autoComplete="current-password" />
+                    value={password}
+                    autoComplete="current-password" 
+                    onChange={(e)=> setPass(e.target.value)}/>
                 </div>
               </div>
               <button
+              onClick={login}
                 type="submit"
                 className="button is-block is-info is-large is-fullwidth">Sign In</button>
             </form>

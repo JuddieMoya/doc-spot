@@ -44,7 +44,7 @@ const RegisterForm = (props) => {
             }
           </div>
         </div>
-        {/* <div className="field">
+        <div className="field">
           <div className="control">
             <input ref={register({required: true, validate: {isValidImage, isValidUrl}})}
                    name="picture"
@@ -59,7 +59,7 @@ const RegisterForm = (props) => {
               </div>
             }
           </div>
-        </div> */}
+        </div>
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 6})}
