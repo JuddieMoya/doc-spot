@@ -27,8 +27,8 @@ class Home extends React.Component {
         <section className="section section-feature-grey is-medium">
           <div className="container">
             <div className="title-wrapper has-text-centered">
-              <h2 className="title is-2">Great Power Comes </h2>
-              <h3 className="subtitle is-5 is-muted">With great Responsability</h3>
+              <h2 className="title is-2">We are here to help  </h2>
+              <h3 className="subtitle is-5 is-muted">lets get started</h3>
               <div className="divider is-centered"></div>
             </div>
 
