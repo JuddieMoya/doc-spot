@@ -29,7 +29,7 @@ const ServiceItem = ({service}) => {
         <div className="card-action">
            <Link 
               to={`/services/${service.id}`}
-              className="button btn-align-md accent-btn raised">Learn More</Link>
+              className="button btn-align-md accent-btn raised">Search</Link>
         </div>
       </div>
     </div>

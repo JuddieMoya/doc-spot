@@ -1,8 +1,9 @@
 import React from 'react'
 import {useForm }from 'react-hook-form'
 
-import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
+// import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
 
+import {  sameAs } from 'helpers/Validators'
 
 
 
@@ -22,43 +23,43 @@ const RegisterForm = (props) => {
                    autoComplete="email" />
             { errors.email &&
               <div className="form-error">
-                { errors.email.type === 'required' && <span className="help is-danger">Email is required</span> }
-                { errors.email.type === 'pattern' && <span className="help is-danger">Email address is not valid</span> }
+                { errors.email.type === 'required' && <span className="info-please ">Email is required</span> }
+                { errors.email.type === 'pattern' && <span className="info-please ">Email address is not valid</span> }
               </div>
             }
           </div>
         </div>
         <div className="field">
           <div className="control">
-            <input ref={register({required: true, minLength: 10})}
+            <input ref={register({required: true, minLength: 1})}
                    name="fullName"
                    className="input is-large"
                    type="text"
                    placeholder="Full Name"/>
             { errors.fullName &&
               <div className="form-error">
-                { errors.fullName.type === 'required' && <span className="help is-danger">Name is required</span> }
-                { errors.fullName.type === 'minLength' && <span className="help is-danger">Minimum length is 10 characters</span> }
+                { errors.fullName.type === 'required' && <span className="info-please ">Name is required</span> }
+                { errors.fullName.type === 'minLength' && <span className="info-please ">Minimum length is 10characters</span> }
               </div>
             }
           </div>
         </div>
-        <div className="field">
+        {/* <div className="field">
           <div className="control">
             <input ref={register({required: true, validate: {isValidImage, isValidUrl}})}
-                   name="avatar"
+                   name="picture"
                    className="input is-large"
                    type="text"
-                   placeholder="Avatar"/>
-            { errors.avatar &&
+                   placeholder="picture"/>
+            { errors.picture &&
               <div className="form-error">
-                { errors.avatar.type === 'required' && <span className="help is-danger">Avatar is required</span> }
-                { errors.avatar.type === 'isValidImage' && <span className="help is-danger">Avatar extenstion is not valid</span> }
-                { errors.avatar.type === 'isValidUrl' && <span className="help is-danger">Avatar url is not valid</span> }
+                { errors.picture.type === 'required' && <span className="info-please ">picture is required</span> }
+                { errors.picture.type === 'isValidImage' && <span className="info-please ">picture extenstion is not valid</span> }
+                { errors.picture.type === 'isValidUrl' && <span className="info-please ">picture url is not valid</span> }
               </div>
             }
           </div>
-        </div>
+        </div> */}
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 6})}
@@ -69,8 +70,8 @@ const RegisterForm = (props) => {
                    autoComplete="current-password" />
             { errors.password &&
               <div className="form-error">
-               { errors.password.type === 'required' && <span className="help is-danger">Password is required</span> }
-               { errors.password.type === 'minLength' && <span className="help is-danger">Minimum length is 6 characters</span> }
+               { errors.password.type === 'required' && <span className="info-please ">Password is required</span> }
+               { errors.password.type === 'minLength' && <span className="info-please ">Minimum length is 6 characters</span> }
               </div>
             }
           </div>
@@ -85,9 +86,9 @@ const RegisterForm = (props) => {
                    autoComplete="current-password" />
             { errors.passwordConfirmation &&
               <div className="form-error">
-                { errors.passwordConfirmation.type === 'required' && <span className="help is-danger">Password confirmation is required</span> }
-                { errors.passwordConfirmation.type === 'minLength' && <span className="help is-danger">Minimum length is 6 characters</span> }
-                { errors.passwordConfirmation.type === 'sameAs' && <span className="help is-danger">Password confirmation is not the same as password</span> }
+                { errors.passwordConfirmation.type === 'required' && <span className="info-please ">Password confirmation is required</span> }
+                { errors.passwordConfirmation.type === 'minLength' && <span className="info-please ">Minimum length is 6 characters</span> }
+                { errors.passwordConfirmation.type === 'sameAs' && <span className="info-please ">Password confirmation is not the same as password</span> }
               </div>
             }
           </div>

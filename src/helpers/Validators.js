@@ -21,7 +21,7 @@ export const isValidImage = value => {
   export const sameAs = (getValues, field) => value => {
     if (!value) return true
     if (typeof value !== 'string') return false
-    debugger
+  
   
     const compareToValue = getValues()[field]
     return compareToValue === value

@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-const Baseimg = () => 
+const Hero = () => 
   <section className="hero is-default is-bold">
     <div className="hero-body">
       <div className="container">
@@ -27,4 +27,4 @@ const Baseimg = () =>
     </div>
   </section>
 
-export default Baseimg 
+export default Hero
