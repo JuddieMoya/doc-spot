@@ -25,11 +25,11 @@ const Login = () => {
     <div className="auth-page">
       <div className="container has-text-centered">
         <div className="column is-4 is-offset-4">
-          <h3 className="title has-text-grey">Login</h3>
-          <p className="subtitle has-text-grey">Please login to proceed.</p>
+          {/* <h3 className="title has-text-grey">Login</h3>
+          <p className="subtitle has-text-grey">Please login to proceed.</p> */}
           <div className="box">
             <figure className="avatar">
-              <img src="https://image.shutterstock.com/image-vector/ds-letter-logo-design-template-260nw-1080090128.jpg" alt="Company Logo" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMaast7YKZElEE3f_vnVgEpwVxQZ4SdjU8nA&usqp=CAU" alt="Company Logo" />
             </figure>
             <form onSubmit={handleSubmit(onLogin)}>
               <div className="field">
@@ -56,7 +56,7 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className="button is-block is-info is-large is-fullwidth">Sign In</button>
+                className="button is-block is-info is-large is-fullwidth">Login</button>
             </form>
           </div>
           <p className="has-text-grey">
