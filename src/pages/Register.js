@@ -1,24 +1,23 @@
-import React, { useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import RegisterForm from '../components/auth/Registerform'
 import { register } from '../actions '
 import { useToasts } from 'react-toast-notifications'
-
+import app from "../../firebase/firebase";
 import { Redirect } from 'react-router-dom'
 
 // import { withRouter } from 'react-router-dom'
 
 const Register = (props) => {
-
   const [ redirect, setRedirect ] = useState(false)
   const { addToast } = useToasts()
 
-  const registerUser = (userData) => {
-    // props.history.push('/')
-    register(userData)
-      .then(
-        _ => setRedirect(true),
-        errorMessage => addToast(errorMessage, { appearance: 'error', autoDismiss: true, autoDismissTimeout: 3000 }))
-  }
+  // const registerUser = (userData) => {
+  //   // props.history.push('/')
+  //   register(userData)
+  //     .then(
+  //       _ => setRedirect(true),
+  //       errorMessage => addToast(errorMessage, { appearance: 'error', autoDismiss: true, autoDismissTimeout: 3000 }))
+  // }
 
   if (redirect) { return <Redirect to="/" />}
 
@@ -32,7 +31,7 @@ const Register = (props) => {
             <figure className="avatar">
               <img src="https://placehold.it/240x240" alt="Company Logo" />
             </figure>
-            <RegisterForm onRegister={registerUser} />
+            <RegisterForm />
           </div>
           <p className="has-text-grey">
             <a>Sign In With Google</a>&nbsp;
