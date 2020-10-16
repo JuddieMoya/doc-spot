@@ -1,4 +1,4 @@
-import withAuthorization from 'components/hoc/withAuthorization'
+import withAuthorization from '../components/hoc/withAuthorization'
 
 
 

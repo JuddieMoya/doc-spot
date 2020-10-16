@@ -3,7 +3,7 @@ import 'firebase/auth'
 
 import db from 'db'
 
-// --------- SERVICES ----------
+
 
 export const fetchServiceById = serviceId => 
   db.collection('services')
@@ -20,10 +20,7 @@ export const fetchServices = () =>
       return services
     })
 
-// --------- SERVICES END ----------
 
-
-// --------- AUTH ----------
 
 const createUserProfile = (userProfile) => 
   db.collection('profiles')

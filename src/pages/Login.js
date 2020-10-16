@@ -29,7 +29,7 @@ const Login = () => {
           <p className="subtitle has-text-grey">Please login to proceed.</p>
           <div className="box">
             <figure className="avatar">
-              <img src="https://placehold.it/128x128" alt="Company Logo" />
+              <img src="https://image.shutterstock.com/image-vector/ds-letter-logo-design-template-260nw-1080090128.jpg" alt="Company Logo" />
             </figure>
             <form onSubmit={handleSubmit(onLogin)}>
               <div className="field">
