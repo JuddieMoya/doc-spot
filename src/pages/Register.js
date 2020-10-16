@@ -2,10 +2,6 @@ import React, {useEffect, useState} from 'react'
 import RegisterForm from '../components/auth/Registerform'
 import { register } from '../actions '
 import { useToasts } from 'react-toast-notifications'
-<<<<<<< HEAD
-import app from "../../firebase/firebase";
-=======
->>>>>>> 599d375a34df725501f60de1f78021d26e3d6e7f
 import { Redirect } from 'react-router-dom'
 import onlyGuest from 'components/hoc/onlyGuest'
 
@@ -15,13 +11,13 @@ const Register = (props) => {
   const [ redirect, setRedirect ] = useState(false)
   const { addToast } = useToasts()
 
-  // const registerUser = (userData) => {
-  //   // props.history.push('/')
-  //   register(userData)
-  //     .then(
-  //       _ => setRedirect(true),
-  //       errorMessage => addToast(errorMessage, { appearance: 'error', autoDismiss: true, autoDismissTimeout: 3000 }))
-  // }
+  const registerUser = (userData) => {
+    // props.history.push('/')
+    register(userData)
+      .then(
+        _ => setRedirect(true),
+        errorMessage => addToast(errorMessage, { appearance: 'error', autoDismiss: true, autoDismissTimeout: 3000 }))
+  }
 
   if (redirect) { return <Redirect to="/" />}
 
