@@ -1,9 +1,9 @@
 import React from 'react'
 import {useForm }from 'react-hook-form'
 
-import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
+// import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
 
-
+import { sameAs } from 'helpers/Validators'
 
 
 
@@ -44,9 +44,9 @@ const RegisterForm = (props) => {
             }
           </div>
         </div>
-        <div className="field">
+        {/* <div className="field">
           <div className="control">
-            <input ref={register({required: true, validate: {isValidImage, isValidUrl}})}
+            <input ref={register({required: false, validate: {isValidImage, isValidUrl}})}
                    name="picture"
                    className="input is-large"
                    type="text"
@@ -59,7 +59,7 @@ const RegisterForm = (props) => {
               </div>
             }
           </div>
-        </div>
+        </div> */}
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 6})}
