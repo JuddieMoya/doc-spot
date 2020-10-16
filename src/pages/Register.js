@@ -2,8 +2,8 @@ import React, { useState} from 'react'
 import RegisterForm from '../components/auth/Registerform'
 import { register } from '../actions '
 import { useToasts } from 'react-toast-notifications'
-
 import { Redirect } from 'react-router-dom'
+import onlyGuest from 'components/hoc/onlyGuest'
 
 // import { withRouter } from 'react-router-dom'
 
@@ -30,7 +30,7 @@ const Register = (props) => {
           <p className="subtitle has-text-grey">Please Register to proceed.</p>
           <div className="box">
             <figure className="avatar">
-              <img src="https://placehold.it/240x240" alt="Company Logo" />
+              <img src="https://placehold.it/128x128" alt="Company Logo" />
             </figure>
             <RegisterForm onRegister={registerUser} />
           </div>
@@ -46,4 +46,6 @@ const Register = (props) => {
 }
 
 // export default withRouter(Register)
-export default Register
+export default onlyGuest(Register)
+
+

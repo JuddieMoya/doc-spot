@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import {useForm }from 'react-hook-form'
+import {useForm} from 'react-hook-form'
 import { useToasts } from 'react-toast-notifications'
 import { Redirect } from 'react-router-dom'
+import onlyGuest from 'components/hoc/onlyGuest'
 
 import { login } from '../actions '
 
@@ -28,7 +29,7 @@ const Login = () => {
           <p className="subtitle has-text-grey">Please login to proceed.</p>
           <div className="box">
             <figure className="avatar">
-              <img src="https://placehold.it/240x240" alt="Company Logo" />
+              <img src="https://placehold.it/128x128" alt="Company Logo" />
             </figure>
             <form onSubmit={handleSubmit(onLogin)}>
               <div className="field">
@@ -69,4 +70,5 @@ const Login = () => {
   )
 }
 
-export default Login
+export default onlyGuest(Login)
+
