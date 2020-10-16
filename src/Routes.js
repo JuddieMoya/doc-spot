@@ -8,9 +8,13 @@ import ServicesPage from './pages/Services'
 import ServiceDetailPage from './pages/ServiceDetail'
 import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
+import SecretPage from './pages/Secret'
 
 const Routes = () => 
   <Switch>
+    <Route path="/secret">
+      <SecretPage />
+    </Route>
     <Route path="/register">
       <RegisterPage />
     </Route>
@@ -35,6 +39,3 @@ const Routes = () =>
   </Switch>
 
 export default Routes
-
-
-

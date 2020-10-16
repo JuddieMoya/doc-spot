@@ -1,8 +1,15 @@
 import React, {useEffect, useState } from 'react'
 import {useForm }from 'react-hook-form'
+<<<<<<< HEAD
 import app from "../../firebase/firebase";
 // import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
 import {  sameAs } from 'helpers/Validators'
+=======
+
+import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
+
+// import { sameAs } from 'helpers/Validators'
+>>>>>>> 599d375a34df725501f60de1f78021d26e3d6e7f
 
 const RegisterForm = (props) => {
   const [email, setEmail] = useState("");
@@ -85,6 +92,7 @@ const RegisterForm = (props) => {
             </div>
           }
         </div>
+<<<<<<< HEAD
       </div> */}
       <div className="field">
         <div className="control">
@@ -102,6 +110,39 @@ const RegisterForm = (props) => {
               { errors.password.type === 'minLength' && <span className="info-please ">Minimum length is 6 characters</span> }
             </div>
           }
+=======
+        <div className="field">
+          <div className="control">
+            <input ref={register({required: false, validate: {isValidImage, isValidUrl}})}
+                   name="picture"
+                   className="input is-large"
+                   type="text"
+                   placeholder="picture"/>
+            { errors.picture &&
+              <div className="form-error">
+                { errors.picture.type === 'required' && <span className="info-please ">picture is required</span> }
+                { errors.picture.type === 'isValidImage' && <span className="info-please ">picture extenstion is not valid</span> }
+                { errors.picture.type === 'isValidUrl' && <span className="info-please ">picture url is not valid</span> }
+              </div>
+            }
+          </div>
+        </div>
+        <div className="field">
+          <div className="control">
+            <input ref={register({required: true, minLength: 6})}
+                   name="password"
+                   className="input is-large"
+                   type="password"
+                   placeholder="Your Password"
+                   autoComplete="current-password" />
+            { errors.password &&
+              <div className="form-error">
+               { errors.password.type === 'required' && <span className="info-please ">Password is required</span> }
+               { errors.password.type === 'minLength' && <span className="info-please ">Minimum length is 6 characters</span> }
+              </div>
+            }
+          </div>
+>>>>>>> 599d375a34df725501f60de1f78021d26e3d6e7f
         </div>
       </div>
       <div className="field">

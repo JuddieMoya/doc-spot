@@ -2,8 +2,12 @@ import React, {useEffect, useState} from 'react'
 import RegisterForm from '../components/auth/Registerform'
 import { register } from '../actions '
 import { useToasts } from 'react-toast-notifications'
+<<<<<<< HEAD
 import app from "../../firebase/firebase";
+=======
+>>>>>>> 599d375a34df725501f60de1f78021d26e3d6e7f
 import { Redirect } from 'react-router-dom'
+import onlyGuest from 'components/hoc/onlyGuest'
 
 // import { withRouter } from 'react-router-dom'
 
@@ -25,11 +29,11 @@ const Register = (props) => {
     <div className="auth-page">
       <div className="container has-text-centered">
         <div className="column is-4 is-offset-4">
-          <h3 className="title has-text-grey">Register</h3>
-          <p className="subtitle has-text-grey">Please Register to proceed.</p>
+          {/* <h3 className="title has-text-grey">Register</h3> */}
+          {/* <p className="subtitle has-text-grey">Please Register to proceed.</p> */}
           <div className="box">
             <figure className="avatar">
-              <img src="https://placehold.it/240x240" alt="Company Logo" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMaast7YKZElEE3f_vnVgEpwVxQZ4SdjU8nA&usqp=CAU" alt="Company Logo" />
             </figure>
             <RegisterForm />
           </div>
@@ -45,4 +49,6 @@ const Register = (props) => {
 }
 
 // export default withRouter(Register)
-export default Register
+export default onlyGuest(Register)
+
+

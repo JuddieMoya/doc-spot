@@ -39,7 +39,7 @@ const ServiceDetail = props => {
               <br />
               <p className="has-text-centered">
                 <button className="button is-medium is-info is-outlined">
-                  Learn more
+                  Find your doctor
                 </button>
               </p>
             </div>
