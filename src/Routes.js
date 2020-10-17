@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import HomePage from './pages/Home'
-import FaqPage from './pages/Faq'
+import FaqPage from './pages/Profile'
 import ProfilePage from './pages/Profile'
 import ServicesPage from './pages/Services'
 import ServiceDetailPage from './pages/ServiceDetail'
