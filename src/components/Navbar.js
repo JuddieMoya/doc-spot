@@ -79,9 +79,9 @@ const Navbar = props => {
                 Services
             </Link>
             <Link 
-              to="/faq" 
+              to="/Profile" 
               className="navbar-item is-secondary">
-                Faq
+                Profile
             </Link>
             <div className="navbar-item has-dropdown is-hoverable">
               <a className="navbar-link">

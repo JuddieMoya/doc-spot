@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React, { Component } from 'react'
 import firebase from 'firebase/app'
 import { getUserByUID } from '../api/index'
+=======
+import React from 'react'
+import withAuthorization from 'components/hoc/withAuthorization'
+>>>>>>> 722d42fc745198a300a797679d099473e9c9397f
 
 const Profile = () => {
 
@@ -34,4 +39,4 @@ const Profile = () => {
     )
 }
 
-export default Profile 
+export default withAuthorization(Profile)
