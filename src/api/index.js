@@ -55,7 +55,12 @@ export const getUserProfile = uid =>
     .get()
     .then(snapshot => ({uid, ...snapshot.data()}))
 
+//  const user = firebase.auth().userProfile;
+// user.delete().then(function(){
 
+// }).catch(function(error){
+
+// });
 
 
 
