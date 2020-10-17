@@ -20,8 +20,6 @@ export const fetchServices = () =>
       return services
     })
 
-
-
 const createUserProfile = (userProfile) => 
   db.collection('profiles')
     .doc(userProfile.uid)
@@ -55,7 +53,9 @@ export const getUserProfile = uid =>
     .get()
     .then(snapshot => ({uid, ...snapshot.data()}))
 
-
+export async function getUserByUID(UID) {
+  return await firebase.database().ref(`Users/${UID}`).once('value');
+}
 
 
 

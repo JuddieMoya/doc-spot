@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import RegisterForm from '../components/auth/Registerform'
 import { register } from '../actions '
 import { useToasts } from 'react-toast-notifications'
@@ -8,7 +8,6 @@ import onlyGuest from 'components/hoc/onlyGuest'
 // import { withRouter } from 'react-router-dom'
 
 const Register = (props) => {
-
   const [ redirect, setRedirect ] = useState(false)
   const { addToast } = useToasts()
 
@@ -32,7 +31,7 @@ const Register = (props) => {
             <figure className="avatar">
               <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQMaast7YKZElEE3f_vnVgEpwVxQZ4SdjU8nA&usqp=CAU" alt="Company Logo" />
             </figure>
-            <RegisterForm onRegister={registerUser} />
+            <RegisterForm />
           </div>
           <p className="has-text-grey">
             <a>Sign In With Google</a>&nbsp;
