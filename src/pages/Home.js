@@ -3,7 +3,7 @@ import { connect } from 'react-redux' // HOC
 import Hero from 'components/Hero'
 import ServiceItem from 'components/service/ServiceItem'
 
-import { fetchServices } from '../actions '
+import { fetchServices } from 'actions '
 
 class Home extends React.Component {
 
@@ -12,7 +12,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchServices())
+    this.props.fetchServices()
   }
 
   renderServices = (services) =>
@@ -27,13 +27,13 @@ class Home extends React.Component {
         <section className="section section-feature-grey is-medium">
           <div className="container">
             <div className="title-wrapper has-text-centered">
-              <h2 className="title is-2">We are here to help  </h2>
-              <h3 className="subtitle is-5 is-muted">lets get started</h3>
+              <h2 className="title is-2">We are here to help </h2>
+              <h3 className="subtitle is-5 is-muted">Lets get started</h3>
               <div className="divider is-centered"></div>
             </div>
 
             <div className="content-wrapper">
-              <div className="columns">
+            <div className="columns is-multiline">
                 { this.renderServices(services) }
               </div>
             </div>
@@ -46,4 +46,5 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({services: state.services.all})
     
-export default connect(mapStateToProps)(Home)
+export default connect(mapStateToProps, {fetchServices})(Home)
+

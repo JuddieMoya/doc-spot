@@ -1,21 +1,22 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchServiceById } from '../actions '
+import { fetchServiceById } from 'actions '
 
 import Spinner from 'components/Spinner'
+import OfferModal from 'components/service/OfferModal'
 
 const ServiceDetail = props => {
 
   const { serviceId } = useParams()
-  const { dispatch, isFetching } = props
+  const { fetchServiceById, isFetching } = props
 
   useEffect(() => {
-    dispatch(fetchServiceById(serviceId))
-  }, [serviceId, dispatch])
+    fetchServiceById(serviceId)
+  }, [serviceId, fetchServiceById])
 
 
-  const { service } = props
+  const { service, auth } = props
 
   if (isFetching || serviceId !== service.id) { return <Spinner /> }
 
@@ -37,11 +38,11 @@ const ServiceDetail = props => {
                   {service.description}
               </h2>
               <br />
-              <p className="has-text-centered">
-                <button className="button is-medium is-info is-outlined">
-                  Find your doctor
-                </button>
-              </p>
+              <div className="has-text-centered">
+                <OfferModal 
+                  auth={auth}
+                  service={service}/>
+              </div>
             </div>
           </div>
         </div>
@@ -50,11 +51,12 @@ const ServiceDetail = props => {
   )
 }
 
-const mapStateToProps = ({selectedService}) => (
+const mapStateToProps = ({selectedService, auth}) => (
   {
     service: selectedService.item,
-    isFetching: selectedService.isFetching
+    isFetching: selectedService.isFetching,
+    auth
   }
 )
 
-export default connect(mapStateToProps)(ServiceDetail)
+export default connect(mapStateToProps, {fetchServiceById})(ServiceDetail)

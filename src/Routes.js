@@ -8,18 +8,35 @@ import ServicesPage from './pages/Services'
 import ServiceDetailPage from './pages/ServiceDetail'
 import LoginPage from './pages/Login'
 import RegisterPage from './pages/Register'
-import SecretPage from './pages/Secret'
+
+
+import ServiceCreatePage from './pages/services/ServiceCreate'
+import UserServicesPage from './pages/services/UserServices'
+
+import SentOffersPage from './pages/offers/SentOffers'
+import ReceivedOffersPage from './pages/offers/ReceivedOffers'
 
 const Routes = () => 
   <Switch>
-    <Route path="/secret">
-      <SecretPage />
-    </Route>
+    
+   
     <Route path="/register">
       <RegisterPage />
     </Route>
     <Route path="/login">
       <LoginPage />
+    </Route>
+    <Route path="/offers/sent">
+      <SentOffersPage />
+    </Route>
+    <Route path="/offers/received">
+      <ReceivedOffersPage />
+    </Route>
+    <Route path="/services/me">
+      <UserServicesPage />
+    </Route>
+    <Route path="/services/new">
+      <ServiceCreatePage />
     </Route>
     <Route path="/services/:serviceId">
       <ServiceDetailPage />
@@ -30,6 +47,7 @@ const Routes = () =>
     <Route path="/profile">
       <ProfilePage />
     </Route>
+    
     <Route path="/">
       <HomePage />
     </Route>

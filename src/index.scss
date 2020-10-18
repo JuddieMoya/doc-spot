@@ -1,48 +1,3 @@
-body {
-  margin: 0;
-}
-
-$section-grey: #fbfbfb;
-
-
-// AUTH STARTS
-.auth-page {
-  .hero.is-success {
-    background: #F2F6FA;
-  }
-  .hero .nav, .hero.is-success .nav {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  .box {
-    margin-top: 5rem;
-  }
-  .avatar {
-    margin-top: -70px;
-    padding-bottom: 20px;
-  }
-  .avatar img {
-    padding: 5px;
-    background: #fff;
-    border-radius: 50%;
-    -webkit-box-shadow: 0 2px 3px rgba(105, 16, 16, 0.1), 0 0 0 1px rgba(10,10,10,.1);
-    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
-  }
-  input {
-    font-weight: 300;
-  }
-  p {
-    font-weight: 700;
-  }
-  p.subtitle {
-    padding-top: 1rem;
-  }
-}
-// AUTH ENDS
- 
-  
-
-
 $white: #fff;
 $smoke-white: #fcfcfc;
 $grey-white: #f2f2f2;
@@ -71,7 +26,57 @@ $muted-grey: #999;
 $section-grey: #fbfbfb;
 
 
+// AUTH STARTS
+.auth-page {
+  .hero.is-success {
+    background: #F2F6FA;
+  }
+  .hero .nav, .hero.is-success .nav {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .box {
+    margin-top: 5rem;
+  }
+  .avatar {
+    margin-top: -70px;
+    padding-bottom: 20px;
+  }
+  .avatar img {
+    padding: 5px;
+    background: #fff;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+    box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  }
+  input {
+    font-weight: 300;
+  }
+  p {
+    font-weight: 700;
+  }
+  p.subtitle {
+    padding-top: 1rem;
+  }
+}
+// AUTH ENDS
 
+// SERVICE CREATE
+.create-page {
+    margin-top: 70px;
+    margin-bottom: 70px;
+  
+    .form-container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+  
+    .field.is-grouped {
+      margin-top: 20px;
+    }
+  }
+  // SERVICE CREATE ENDS
+  
 /* ==========================================================================
 General Keyframes animations
 ========================================================================== */
@@ -1490,4 +1495,4 @@ body #backtotop a {
 }
 :-moz-placeholder { /* Firefox 18- */
     color: $placeholder;
-} 
+}

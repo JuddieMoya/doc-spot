@@ -79,27 +79,39 @@ const Navbar = props => {
                 Services
             </Link>
             <Link 
-              to="/Profile" 
+              to="/profile" 
               className="navbar-item is-secondary">
-                Profile
+               Profile
             </Link>
-            <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">
-                  Dropdown
-              </a>
-
-              <div className="navbar-dropdown">
-                <a className="navbar-item">
-                    Dropdown item
+            { isAuth &&
+              <div className="navbar-item has-dropdown is-hoverable">
+                <a className="navbar-link">
+                    Manage
                 </a>
-                <a className="navbar-item">
-                    Dropdown item
-                </a>
-                <a className="navbar-item">
-                    Dropdown item
-                </a>
+                <div className="navbar-dropdown">
+                  <Link 
+                    to="/services/new"
+                    className="navbar-item">
+                     Services Request
+                  </Link>
+                  <Link 
+                    to="/services/me"
+                    className="navbar-item">
+                      past seen doctor
+                  </Link>
+                  <Link 
+                    to="/offers/sent"
+                    className="navbar-item">
+                       Appointment request
+                  </Link>
+                  <Link 
+                    to="/offers/received"
+                    className="navbar-item">
+                       Appointment confirmed 
+                  </Link>
+                </div>
               </div>
-            </div>
+            }
             { !isAuth &&
               <React.Fragment>
                 <Link
@@ -130,13 +142,6 @@ const Navbar = props => {
       </div>
     </nav>
   )
-}
-
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    auth: state.firebase.auth
-  }
 }
 
 export default Navbar
