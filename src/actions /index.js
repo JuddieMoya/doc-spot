@@ -1,12 +1,13 @@
+
 import { 
   FETCH_SERVICES_SUCCESS, 
   FETCH_SERVICE_SUCCESS,
   REQUEST_SERVICE,
   SET_AUTH_USER, 
   RESET_AUTH_STATE } from 'types'
-  import db from 'db'
-import * as api from 'api'
 
+import * as api from 'api'
+import db from 'db'
 export const fetchServices = () => dispatch =>
    api
     .fetchServices()
@@ -61,11 +62,6 @@ export const resetAuthState = () => ({type: RESET_AUTH_STATE})
 
 
 
-
-
-
-
-
 const services = [{
   id: '2asd8sa7d98',
   user: 'some_id_1',
@@ -94,22 +90,3 @@ const services = [{
 }]
 
 
-
-
-// export const fetchServices = () => {
-
-//   db.collection('services')
-//     .get()
-//     .then(snapshot => {
-//       snapshot.docs.forEach((doc) => {
-//         debugger
-//         const service = doc.data()
-//         console.log(service)
-//       })
-//     })
-
-//   return {
-//     type: FETCH_SERVICES,
-//     services
-//   }
-// }

@@ -7,7 +7,7 @@ import initStore from './store'
 import { BrowserRouter as Router } from 'react-router-dom'
 import ServiceApp from './ServiceApp'
 
-import { onAuthStateChanged, storeAuthUser, resetAuthState } from '../src/actions '
+import { onAuthStateChanged, storeAuthUser, resetAuthState } from 'actions /index'
 
 const store = initStore()
 
