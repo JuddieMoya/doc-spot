@@ -1,12 +1,12 @@
 import db from 'db'
 
 
-export const createCollaboration = collab => 
+export const createCollaboration = collab =>
   db.collection('collaborations')
     .add(collab)
     .then(docRef => docRef.id)
 
-export const sendMessage = message => 
+export const sendMessage = message =>
   db.collection('profiles')
     .doc(message.toUser)
     .collection('messages')
@@ -18,9 +18,9 @@ export const subscribeToMessages = (userId, callback) =>
     .doc(userId)
     .collection('messages')
     .onSnapshot(snapshot => {
-      const messages = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}))
+      const messages = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }))
       callback(messages)
-  })
+    })
 
 
 export const markMessageAsRead = message =>
@@ -28,5 +28,5 @@ export const markMessageAsRead = message =>
     .doc(message.toUser)
     .collection('messages')
     .doc(message.id)
-    .update({isRead: true})
+    .update({ isRead: true })
 
