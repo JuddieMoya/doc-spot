@@ -1,6 +1,7 @@
 import React from 'react'
-import {useForm }from 'react-hook-form'
-
+import { useForm } from 'react-hook-form'
+import { Link } from "react-router-dom";
+import {Card, Nav} from 'react-bootstrap'
 // import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
 
 import { sameAs } from 'helpers/Validators'
@@ -16,11 +17,11 @@ const RegisterForm = (props) => {
         <div className="field">
           <div className="control">
             <input ref={register({required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/})}
-                   name="email"
-                   className="input is-large"
-                   type="email"
-                   placeholder="Your Email"
-                   autoComplete="email" />
+                  name="email"
+                  className="input is-large"
+                  type="email"
+                  placeholder="Your Email"
+                  autoComplete="email" />
             { errors.email &&
               <div className="form-error">
                 { errors.email.type === 'required' && <span className="info-please ">Email is required</span> }
@@ -32,10 +33,10 @@ const RegisterForm = (props) => {
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 1})}
-                   name="fullName"
-                   className="input is-large"
-                   type="text"
-                   placeholder="Full Name"/>
+                  name="fullName"
+                  className="input is-large"
+                  type="text"
+                  placeholder="Full Name"/>
             { errors.fullName &&
               <div className="form-error">
                 { errors.fullName.type === 'required' && <span className="info-please ">Name is required</span> }
@@ -47,10 +48,10 @@ const RegisterForm = (props) => {
         {/* <div className="field">
           <div className="control">
             <input ref={register({required: false, validate: {isValidImage, isValidUrl}})}
-                   name="picture"
-                   className="input is-large"
-                   type="text"
-                   placeholder="picture"/>
+                  name="picture"
+                  className="input is-large"
+                  type="text"
+                  placeholder="picture"/>
             { errors.picture &&
               <div className="form-error">
                 { errors.picture.type === 'required' && <span className="info-please ">picture is required</span> }
@@ -63,15 +64,15 @@ const RegisterForm = (props) => {
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 6})}
-                   name="password"
-                   className="input is-large"
-                   type="password"
-                   placeholder="Your Password"
-                   autoComplete="current-password" />
+                  name="password"
+                  className="input is-large"
+                  type="password"
+                  placeholder="Your Password"
+                  autoComplete="current-password" />
             { errors.password &&
               <div className="form-error">
-               { errors.password.type === 'required' && <span className="info-please ">Password is required</span> }
-               { errors.password.type === 'minLength' && <span className="info-please ">Minimum length is 6 characters</span> }
+              { errors.password.type === 'required' && <span className="info-please ">Password is required</span> }
+              { errors.password.type === 'minLength' && <span className="info-please ">Minimum length is 6 characters</span> }
               </div>
             }
           </div>
@@ -79,11 +80,11 @@ const RegisterForm = (props) => {
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 6, validate: {sameAs: sameAs(getValues, 'password')}})}
-                   name="passwordConfirmation"
-                   className="input is-large"
-                   type="password"
-                   placeholder="Repeat Password"
-                   autoComplete="current-password" />
+                  name="passwordConfirmation"
+                  className="input is-large"
+                  type="password"
+                  placeholder="Repeat Password"
+                  autoComplete="current-password" />
             { errors.passwordConfirmation &&
               <div className="form-error">
                 { errors.passwordConfirmation.type === 'required' && <span className="info-please ">Password confirmation is required</span> }
@@ -93,9 +94,11 @@ const RegisterForm = (props) => {
             }
           </div>
         </div>
-        <button
-          type="submit"
-          className="button is-block is-info is-large is-fullwidth">Register</button>
+        <Nav>
+          <Link to="/profile">
+            <button /* type="submit" */ className="button is-block is-info is-large is-fullwidth">Register</button>
+          </Link>
+        </Nav>
       </form>
     )
   }

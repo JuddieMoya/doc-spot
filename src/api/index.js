@@ -55,7 +55,13 @@ export const getUserProfile = uid =>
     .get()
     .then(snapshot => ({uid, ...snapshot.data()}))
 
-
+export const getUserByUID = (uid) => {
+   db.collections('users')
+    .doc(uid)
+    .get()
+    .then(snapshot => ({uid, ...snapshot.data()}))
+}
+    
 
 
 
