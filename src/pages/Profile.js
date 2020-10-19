@@ -1,43 +1,100 @@
-import React, { Component } from 'react'
+import React, { useEffect, useState } from 'react'
 import firebase from 'firebase/app'
-import { getUserByUID } from '../api/index'
-import withAuthorization from 'components/hoc/withAuthorization'
+import { getUserProfile } from '../api/index'
+import { useDispatch } from "react-redux"
 
-const Profile = () => {
-return (
+const Profile = ({user}) => {
+    const dispatch = useDispatch();
 
-    <h1> hello yall we couldnt firgure this one out</h1>
-
-)
+    let [userInfo, setUserInfo] = useState(user);
 
     // const getMyData = async () => {
     //     let UID = firebase.auth().currentUser.uid;
-    //     let userData = await getUserByUID(UID);
-    //     console.log(userData.image)
+    //     userInfo = await getUserProfile(UID);
+    //     console.log("this is the user data", userInfo)
+    //     return userInfo
     // }
-    // let tog = true
-    // const toggle = () => {
-    //     return !tog
+    
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(function(user) {
+            let currentUser = firebase.auth().currentUser;
+             let name, email, avatar, uid, emailVerified;
+             if (currentUser != null) {
+                 name = user.displayName;
+                 email = user.email;
+                 avatar = user.photoURL;
+                 emailVerified = user.emailVerified;
+                 uid = user.uid;
+               } else {
+                 return null
+             }
+     
+             console.log("emial text", email)
+        });
+    }, [])
+
+    firebase.auth().onAuthStateChanged(function(user) {
+       let currentUser = firebase.auth().currentUser;
+        let name, email, avatar, uid, emailVerified;
+        if (currentUser != null) {
+            name = user.displayName;
+            email = user.email;
+            avatar = user.photoURL;
+            emailVerified = user.emailVerified;
+            uid = user.uid;
+          } else {
+            return null
+        }
+
+        console.log("emial text", email)
+    });
+    
+    // const handleEdit = () => {
+    //     let toggle = document.getElementById("editUser");
+    //     if(toggle.style.display === "none") {
+    //         toggle.style.display = "block";
+    //     } else {
+    //         toggle.style.display = "none"
+    //     }
     // }
 
-    // return (
-    //     <div className="auth-page">
-    //         <div className="container has-text-centered">
-    //             <div className="column is-4 is-offset-4">
-    //                 <div className="box">
-    //                     <figure className="avatar">
-    //                         <img src="" alt="Company Logo" />
-    //                     </figure>
-    //                 </div>
-    //                 <button onClick={toggle}>Edit User</button>
-    //                 {tog === true ? null : 
-    //                 <span>
-    //                     {getMyData}
-    //                 </span>}
-    //             </div>
-    //         </div>
-    //     </div>
-    // 
+    const deleteUser =(evt)=> {
+        const user = firebase.auth().currentUser;
+        console.log(user)
+        let password = prompt('password')
+        const credential = firebase.auth.EmailAuthProvider.credential(
+            user.email,
+            password
+        );
+        user.reauthenticateWithCredential(credential).then(function() {
+            // User re-authenticated.
+            }).catch(function(error) {
+            // An error happened.
+            console.error(error)
+            });
+        user.delete().then(function() {
+        // User deleted.
+        }).catch(function(error) {
+            console.error(error)
+        // An error happened.
+        });
+    }
+
+    return (
+        <>
+            <div className="containter">
+                {/* <img src={} alt="avatar"/> */}
+                <h1>Username</h1>
+                {/* <button onClick={handleEdit}>Edit User</button> */}
+                <button type="button" className="" onClick={deleteUser}>Delete User</button>
+                <div id="editUser">
+                    <input />
+                    <input />
+                    <input />
+                </div>
+            </div>    
+        </>
+    )
 }
 
-export default withAuthorization(Profile)
+export default Profile
