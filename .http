@@ -1,0 +1,9 @@
+GET https://maps.googleapis.com/maps/api/place/findplacefromtext/json?key=AIzaSyDwkYBil8TeIfrhqbgv-WMdL8KkgqXhRkw&input=dentist&inputtype=textquery&fields=name,formatted_address
+
+###
+
+GET https://maps.googleapis.com/maps/api/geocode/json?address={46220}&key=AIzaSyDwkYBil8TeIfrhqbgv-WMdL8KkgqXhRkw
+
+###
+
+GET https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=dentists&inputtype=textquery&fields=photos,formatted_address,name,opening_hours,rating&locationbias=circle:50000@39.7684,-86.1581&key=AIzaSyDwkYBil8TeIfrhqbgv-WMdL8KkgqXhRkw
