@@ -9,7 +9,7 @@ const SentOffers = ({auth}) => {
         <h1 class="title">Received Offers</h1>
         <div className="columns">
           <div className="column is-one-third">
-            { /* <ServiceItem
+            <ServiceItem
               noButton
               className="offer-card"
               service={o.service}>
@@ -32,7 +32,7 @@ const SentOffers = ({auth}) => {
                 </div>
               </div>
             </ServiceItem>
-            */ }
+            
           </div>
         </div>
       </div>

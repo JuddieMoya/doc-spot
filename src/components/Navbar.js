@@ -102,14 +102,20 @@ const Navbar = props => {
                         Your Services
                     </Link>
                     <Link 
-                      to="/offers/sent"
+                      to="/appointment/Request"
                       className="navbar-item">
-                        Sent Offers
+                       Request appointment
                     </Link>
                     <Link 
-                      to="/offers/received"
+                      to="/appointment/confirmed"
                       className="navbar-item">
-                        Received Offers
+                        confirm appointment
+                    </Link>
+                    <Link 
+                      to="/collaborations/me"
+                      className="navbar-item">
+                        Received Appointments
+                        
                     </Link>
                   </div>
                 </div>

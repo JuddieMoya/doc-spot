@@ -33,7 +33,7 @@ class SentOffers extends React.Component {
     return (
       <div className="container">
         <div className="content-wrapper">
-          <h1 className="title">Sent Offers</h1>
+          <h1 className="title">Request Appointment</h1>
           <div className="columns">
             { offers.map(offer => (
               <div 

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "docspot1-29088"
+    "default": "Docspot",
+    "staging": "docspot1-29088"
   }
 }
