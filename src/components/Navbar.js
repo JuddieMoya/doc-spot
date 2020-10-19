@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import ReceivedMessages from './ReceivedMessages'
 
 const Navbar = props => {
 
@@ -79,27 +80,49 @@ const Navbar = props => {
                 Services
             </Link>
             <Link 
-              to="/faq" 
+              to="/Profile" 
               className="navbar-item is-secondary">
-                Faq
+               Profile
             </Link>
-            <div className="navbar-item has-dropdown is-hoverable">
-              <a className="navbar-link">
-                  Dropdown
-              </a>
-
-              <div className="navbar-dropdown">
-                <a className="navbar-item">
-                    Dropdown item
-                </a>
-                <a className="navbar-item">
-                    Dropdown item
-                </a>
-                <a className="navbar-item">
-                    Dropdown item
-                </a>
-              </div>
-            </div>
+            { isAuth &&
+              <React.Fragment>
+                <div className="navbar-item has-dropdown is-hoverable">
+                  <a className="navbar-link">
+                      Manage
+                  </a>
+                  <div className="navbar-dropdown">
+                    <Link 
+                      to="/services/new"
+                      className="navbar-item">
+                        Create Service
+                    </Link>
+                    <Link 
+                      to="/services/me"
+                      className="navbar-item">
+                        Your Services
+                    </Link>
+                    <Link 
+                      to="/offers/sent"
+                      className="navbar-item">
+                        Sent Offers
+                    </Link>
+                    <Link 
+                      to="/offers/received"
+                      className="navbar-item">
+                        Received Offers
+                    </Link>
+                  </div>
+                </div>
+                <div className="navbar-item has-dropdown is-hoverable">
+                  <a className="navbar-link">
+                      Messages
+                  </a>
+                  <div className="navbar-dropdown navbar-dropdown-messages">
+                    { user.messages && <ReceivedMessages /> }
+                  </div>
+                </div>
+              </React.Fragment>
+            }
             { !isAuth &&
               <React.Fragment>
                 <Link
@@ -130,6 +153,13 @@ const Navbar = props => {
       </div>
     </nav>
   )
+}
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    auth: state.firebase.auth
+  }
 }
 
 export default Navbar

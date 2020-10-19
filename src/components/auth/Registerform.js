@@ -1,26 +1,25 @@
 import React from 'react'
-import {useForm }from 'react-hook-form'
-
-// import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
-
-import { sameAs } from 'helpers/Validators'
-
+import { useForm } from 'react-hook-form'
+import { Link } from "react-router-dom";
+import {Card, Nav} from 'react-bootstrap'
+import {register as apiRegister} from '../../api/index'
+import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
 
 
 const RegisterForm = (props) => {
   
     const { register, handleSubmit, errors, getValues } = useForm()
-  
+    const onSubmit = data => apiRegister(data)
     return (
-      <form onSubmit={handleSubmit(props.onRegister)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="field">
           <div className="control">
             <input ref={register({required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/})}
-                   name="email"
-                   className="input is-large"
-                   type="email"
-                   placeholder="Your Email"
-                   autoComplete="email" />
+                  name="email"
+                  className="input is-large"
+                  type="email"
+                  placeholder="Your Email"
+                  autoComplete="email" />
             { errors.email &&
               <div className="form-error">
                 { errors.email.type === 'required' && <span className="info-please ">Email is required</span> }
@@ -32,10 +31,10 @@ const RegisterForm = (props) => {
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 1})}
-                   name="fullName"
-                   className="input is-large"
-                   type="text"
-                   placeholder="Full Name"/>
+                  name="fullName"
+                  className="input is-large"
+                  type="text"
+                  placeholder="Full Name"/>
             { errors.fullName &&
               <div className="form-error">
                 { errors.fullName.type === 'required' && <span className="info-please ">Name is required</span> }
@@ -44,34 +43,34 @@ const RegisterForm = (props) => {
             }
           </div>
         </div>
-        {/* <div className="field">
+        <div className="field">
           <div className="control">
             <input ref={register({required: false, validate: {isValidImage, isValidUrl}})}
-                   name="picture"
-                   className="input is-large"
-                   type="text"
-                   placeholder="picture"/>
-            { errors.picture &&
+                  name="avatar"
+                  className="input is-large"
+                  type="text"
+                  placeholder="Avatar"/>
+            { errors.avatar &&
               <div className="form-error">
-                { errors.picture.type === 'required' && <span className="info-please ">picture is required</span> }
-                { errors.picture.type === 'isValidImage' && <span className="info-please ">picture extenstion is not valid</span> }
-                { errors.picture.type === 'isValidUrl' && <span className="info-please ">picture url is not valid</span> }
+                { errors.avatar.type === 'required' && <span className="help is-danger">Avatar is required</span> }
+                { errors.avatar.type === 'isValidImage' && <span className="help is-danger">Avatar extenstion is not valid</span> }
+                { errors.avatar.type === 'isValidUrl' && <span className="help is-danger">Avatar url is not valid</span> }
               </div>
             }
           </div>
-        </div> */}
+        </div>
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 6})}
-                   name="password"
-                   className="input is-large"
-                   type="password"
-                   placeholder="Your Password"
-                   autoComplete="current-password" />
+                  name="password"
+                  className="input is-large"
+                  type="password"
+                  placeholder="Your Password"
+                  autoComplete="current-password" />
             { errors.password &&
               <div className="form-error">
-               { errors.password.type === 'required' && <span className="info-please ">Password is required</span> }
-               { errors.password.type === 'minLength' && <span className="info-please ">Minimum length is 6 characters</span> }
+              { errors.password.type === 'required' && <span className="info-please ">Password is required</span> }
+              { errors.password.type === 'minLength' && <span className="info-please ">Minimum length is 6 characters</span> }
               </div>
             }
           </div>
@@ -79,11 +78,11 @@ const RegisterForm = (props) => {
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 6, validate: {sameAs: sameAs(getValues, 'password')}})}
-                   name="passwordConfirmation"
-                   className="input is-large"
-                   type="password"
-                   placeholder="Repeat Password"
-                   autoComplete="current-password" />
+                  name="passwordConfirmation"
+                  className="input is-large"
+                  type="password"
+                  placeholder="Repeat Password"
+                  autoComplete="current-password" />
             { errors.passwordConfirmation &&
               <div className="form-error">
                 { errors.passwordConfirmation.type === 'required' && <span className="info-please ">Password confirmation is required</span> }
@@ -93,11 +92,9 @@ const RegisterForm = (props) => {
             }
           </div>
         </div>
-        <button
-          type="submit"
-          className="button is-block is-info is-large is-fullwidth">Register</button>
+        <button type="submit" className="button is-block is-info is-large is-fullwidth">Register</button>
       </form>
     )
   }
   
-  export default RegisterForm
+export default RegisterForm
