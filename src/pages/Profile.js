@@ -8,12 +8,12 @@ const Profile = ({user}) => {
 
     let [userInfo, setUserInfo] = useState(user);
 
-    const getMyData = async () => {
-        let UID = firebase.auth().currentUser.uid;
-        userInfo = await getUserProfile(UID);
-        console.log("this is the user data", userInfo)
-        return userInfo
-    }
+    // const getMyData = async () => {
+    //     let UID = firebase.auth().currentUser.uid;
+    //     userInfo = await getUserProfile(UID);
+    //     console.log("this is the user data", userInfo)
+    //     return userInfo
+    // }
     let currentUser = firebase.auth().currentUser;
 
     firebase.auth().onAuthStateChanged(function(user) {
@@ -31,8 +31,8 @@ const Profile = ({user}) => {
         console.log(email)
     });
     
-    handleEdit = () => {
-        let toggle = docuement.getElementById("editUser");
+    const handleEdit = () => {
+        let toggle = document.getElementById("editUser");
         if(toggle.style.display === "none") {
             toggle.style.display = "block";
         } else {
@@ -40,9 +40,9 @@ const Profile = ({user}) => {
         }
     }
                 
-    useEffect (() => {
-        setUserInfo(getMyData())
-    }, [])
+    // useEffect (() => {
+    //     setUserInfo(getMyData())
+    // }, [])
 
     return (
         <>
@@ -60,4 +60,4 @@ const Profile = ({user}) => {
     )
 }
 
-export default Profile 
+export default Profile

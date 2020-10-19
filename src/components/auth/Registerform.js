@@ -2,18 +2,16 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from "react-router-dom";
 import {Card, Nav} from 'react-bootstrap'
-// import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
-
-import { sameAs } from 'helpers/Validators'
-
+import {register as apiRegister} from '../../api/index'
+import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
 
 
 const RegisterForm = (props) => {
   
     const { register, handleSubmit, errors, getValues } = useForm()
-  
+    const onSubmit = data => apiRegister(data)
     return (
-      <form onSubmit={handleSubmit(props.onRegister)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="field">
           <div className="control">
             <input ref={register({required: true, pattern: /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/})}
@@ -45,22 +43,22 @@ const RegisterForm = (props) => {
             }
           </div>
         </div>
-        {/* <div className="field">
+        <div className="field">
           <div className="control">
             <input ref={register({required: false, validate: {isValidImage, isValidUrl}})}
-                  name="picture"
+                  name="avatar"
                   className="input is-large"
                   type="text"
-                  placeholder="picture"/>
-            { errors.picture &&
+                  placeholder="Avatar"/>
+            { errors.avatar &&
               <div className="form-error">
-                { errors.picture.type === 'required' && <span className="info-please ">picture is required</span> }
-                { errors.picture.type === 'isValidImage' && <span className="info-please ">picture extenstion is not valid</span> }
-                { errors.picture.type === 'isValidUrl' && <span className="info-please ">picture url is not valid</span> }
+                { errors.avatar.type === 'required' && <span className="help is-danger">Avatar is required</span> }
+                { errors.avatar.type === 'isValidImage' && <span className="help is-danger">Avatar extenstion is not valid</span> }
+                { errors.avatar.type === 'isValidUrl' && <span className="help is-danger">Avatar url is not valid</span> }
               </div>
             }
           </div>
-        </div> */}
+        </div>
         <div className="field">
           <div className="control">
             <input ref={register({required: true, minLength: 6})}
@@ -94,13 +92,9 @@ const RegisterForm = (props) => {
             }
           </div>
         </div>
-        <Nav>
-          <Link to="/profile">
-            <button /* type="submit" */ className="button is-block is-info is-large is-fullwidth">Register</button>
-          </Link>
-        </Nav>
+        <button type="submit" className="button is-block is-info is-large is-fullwidth">Register</button>
       </form>
     )
   }
   
-  export default RegisterForm
+export default RegisterForm

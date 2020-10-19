@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import Sidebar from 'components/Sidebar'
-import Navbar from 'components/Navbar'
+import Sidebar from '../src/components/Sidebar'
+import Navbar from '../src/components/Navbar'
 import Routes from './Routes'
-import Spinner from 'components/Spinner'
+import Spinner from './components/Spinner'
 
-import { logout } from '../src/actions '
+import {logout} from 'actions'
 
 class ServiceApp extends React.Component {
 
@@ -15,8 +15,6 @@ class ServiceApp extends React.Component {
   renderApplication = auth => 
     <React.Fragment>
       <Navbar 
-        loadFresh
-        id="navbar-main"
         logout={this.handleLogout}
         auth={auth}/>
       <Navbar 
