@@ -31,7 +31,7 @@ class ReceivedOffers extends React.Component {
     return (
       <div className="container">
         <div className="content-wrapper">
-          <h1 className="title">Received Offers</h1>
+          <h1 className="title">Confirmed Appointments</h1>
           <div className="columns">
             { offers.map(offer => (
               <div 

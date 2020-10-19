@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import RegisterForm from '../components/auth/Registerform'
-import { register } from '../actions '
+import { register } from '../actions'
 import { useToasts } from 'react-toast-notifications'
 import { Redirect } from 'react-router-dom'
 import onlyGuest from 'components/hoc/onlyGuest'
