@@ -7,7 +7,12 @@ export * from './auth'
 export * from './offers'
 export * from './collaborations'
 
-
+export const getUserByUID = (uid) => {
+  db.collections('users')
+    .doc(uid)
+    .get()
+    .then(snapshot => ({ uid, ...snapshot.data() }))
+}
 
 
 
@@ -29,13 +34,13 @@ const services = [{
   image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSa5JTnygEJcsV-oQfpF-CC3mdtG2d6-Z7aWw&usqp=CAU',
 
 }, {
-    id: 'ssa9d789as7',
-    user: 'some_id_2',
-    category: 'Family Physicians',
-    title: 'Family Physicians',
-    description: 'They care for the whole family, including children, adults, and the elderly. They do routine checkups and screening tests, give you flu and immunization shots, and manage diabetes and other ongoing medical conditions.',
-    price: 10, //per hour
-    image: 'https://www.medicalwesthospital.org/tyfoon/site/fckeditor/image/family%20physician.jpg',
+  id: 'ssa9d789as7',
+  user: 'some_id_2',
+  category: 'Family Physicians',
+  title: 'Family Physicians',
+  description: 'They care for the whole family, including children, adults, and the elderly. They do routine checkups and screening tests, give you flu and immunization shots, and manage diabetes and other ongoing medical conditions.',
+  price: 10, //per hour
+  image: 'https://www.medicalwesthospital.org/tyfoon/site/fckeditor/image/family%20physician.jpg',
 }]
 
 
