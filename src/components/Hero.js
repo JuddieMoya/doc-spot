@@ -13,7 +13,7 @@ const Hero = () =>
             <h2 className="subtitle is-5 is-muted"> A better you for a better tommorrow </h2>
             <p>
               <a className="button cta rounded primary-btn raised">
-                  Get Started
+                  A Healthier You Starts Today Get Started
               </a>
             </p>
           </div>
