@@ -22,12 +22,12 @@ export const fetchSentOffers = userId => dispatch => {
   return api
     .fetchSentOffers(userId)
     .then(async offers => {
-      const mappedOffers = await Promise.all(
-        offers.map(offer => extractDataFromOffer(offer, 'toUser'))
-      )
+      // const mappedOffers = await Promise.all(
+      //   offers.map(offer => extractDataFromOffer(offer, 'toUser'))
+      // )
 
-      dispatch({type: FETCH_OFFERS_SUCCESS, offers: mappedOffers, offersType: 'sent'})
-      return mappedOffers
+      // dispatch({type: FETCH_OFFERS_SUCCESS, offers: mappedOffers, offersType: 'sent'})
+      // return mappedOffers
     })
 }
 

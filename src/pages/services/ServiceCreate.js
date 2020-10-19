@@ -3,7 +3,7 @@ import withAuthorization from 'components/hoc/withAuthorization'
 import { connect } from 'react-redux'
 import ServiceItem from 'components/service/ServiceItem'
 
-import { fetchUserServices } from 'actions '
+import { fetchUserServices } from 'actions'
 
 class UserServices extends React.Component {
 
@@ -35,10 +35,10 @@ class UserServices extends React.Component {
   }
 }
 
-const mapStateToProps = ({user}) => ({services: user.services})
+const mapDispatchToProps = ({user}) => ({services: user.services})
 
 
-export default withAuthorization(connect(mapStateToProps)(UserServices))
+export default withAuthorization(connect(mapDispatchToProps)(UserServices))
 
 
 

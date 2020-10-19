@@ -3,7 +3,7 @@ import withAuthorization from 'components/hoc/withAuthorization'
 import ServiceItem from 'components/service/ServiceItem'
 import { connect } from 'react-redux'
 
-import { fetchReceivedOffers, changeOfferStatus } from 'actions '
+import { fetchReceivedOffers, changeOfferStatus } from 'actions'
 
 class ReceivedOffers extends React.Component {
 

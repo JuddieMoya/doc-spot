@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchServiceById } from 'actions '
+import { fetchServiceById } from 'actions'
 
 import Spinner from 'components/Spinner'
 import OfferModal from 'components/service/OfferModal'

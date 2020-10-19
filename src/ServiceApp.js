@@ -6,7 +6,7 @@ import Navbar from '../src/components/Navbar'
 import Routes from './Routes'
 import Spinner from './components/Spinner'
 
-import {logout} from 'actions '
+import {logout} from 'actions'
 
 class ServiceApp extends React.Component {
 

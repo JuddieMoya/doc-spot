@@ -4,7 +4,7 @@ import { useToasts } from 'react-toast-notifications'
 import { Redirect } from 'react-router-dom'
 import onlyGuest from 'components/hoc/onlyGuest'
 
-import { login } from 'actions '
+import { login } from 'actions'
 
 const Login = () => {
   const [ redirect, setRedirect ] = useState(false)

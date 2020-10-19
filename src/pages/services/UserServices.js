@@ -2,7 +2,7 @@ import React from 'react'
 import withAuthorization from 'components/hoc/withAuthorization'
 import ServiceItem from 'components/service/ServiceItem'
 
-import { fetchUserServices } from 'actions '
+import { fetchUserServices } from 'actions'
 
 class UserServices extends React.Component {
 
@@ -13,6 +13,7 @@ class UserServices extends React.Component {
 
   render() {
     const { services } = this.props.auth.user
+    console.log(services)
     return (
       <div className="container">
         <div className="content-wrapper">

@@ -5,7 +5,7 @@ import { withToastManager } from 'react-toast-notifications';
 import ServiceItem from 'components/service/ServiceItem'
 import { connect } from 'react-redux'
 import { newMessage, newCollaboration } from 'helpers/offers'
-import { fetchSentOffers, collaborate } from 'actions '
+import { fetchSentOffers, collaborate } from 'actions'
 
 class SentOffers extends React.Component {
 

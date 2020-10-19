@@ -12,4 +12,5 @@ const serviceApp = combineReducers({
 })
 
 
+export const getMessages = state => state.auth.user.messages
 export default serviceApp

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'components/Modal'
 import { useToasts } from 'react-toast-notifications'
 
-import { createRef, createOffer} from 'actions '
+import { createRef, createOffer} from 'actions'
 import { FormProvider } from 'react-hook-form'
 
 const OfferModal = ({service, auth}) => {
@@ -31,7 +31,7 @@ const OfferModal = ({service, auth}) => {
     const offerCopy = { ...offer }
 
     offerCopy.fromUser = createRef('profiles', auth.user.uid)
-    offerCopy.toUser = createRef('profiles', service.user.id)
+    // offerCopy.toUser = createRef('profiles', service.user.id)
     offerCopy.service = createRef('services', service.id)
     offerCopy.time = parseInt(offer.time, 10)
 
