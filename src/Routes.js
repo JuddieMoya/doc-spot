@@ -18,11 +18,14 @@ import SentOffers from './pages/offers/SentOffer'
 
 import ReceivedCollaborationsPage from './components/collaborations/ReceivedCollaborations'
 import CollaborationDetailPage from './components/collaborations/CollaborationDetail'
+export const UserContext = React.createContext()
 
-const Routes = () => 
+const Routes = ()=>
+ 
+
   <Switch>
     
-   
+    
     <Route path="/register">
       <RegisterPage />
     </Route>
@@ -62,4 +65,5 @@ const Routes = () =>
     </Route>
   </Switch>
 
+  
 export default Routes
