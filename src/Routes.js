@@ -47,7 +47,6 @@ const Routes = () =>
     <Route path="/profile">
       <ProfilePage />
     </Route>
-    
     <Route path="/">
       <HomePage />
     </Route>
