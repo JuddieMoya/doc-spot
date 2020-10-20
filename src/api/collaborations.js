@@ -1,3 +1,4 @@
+
 import firebase from 'firebase/app'
 import db from 'db'
 import { createRef } from './index'
@@ -57,6 +58,33 @@ export const joinCollaboration = (collabId, uid) => {
     .update({ joinedPeople: firebase.firestore.FieldValue.arrayUnion(userRef)})
 }
 
+export const leaveCollaboration = (collabId, uid) => {
+  const userRef = createRef('profiles', uid)
+
+  return db
+    .collection('collaborations')
+    .doc(collabId)
+    .update({ joinedPeople: firebase.firestore.FieldValue.arrayRemove(userRef)})
+}
 
 
+export const subToProfile = (uid, done) => 
+  db.collection('profiles')
+    .doc(uid)
+    .onSnapshot(snapshot => {
+      const user = {id: snapshot.id, ...snapshot.data()}
+      done(user)
+    })
 
+export const sendChatMessage = ({message, collabId, timestamp}) =>
+  db.collection('collaborations')
+    .doc(collabId)
+    .collection('messages')
+    .doc(timestamp)
+    .set(message)
+
+export const subToMessages = (collabId, done) =>
+  db.collection('collaborations')
+    .doc(collabId)
+    .collection('messages')
+    .onSnapshot(snapshot => done(snapshot.docChanges()))

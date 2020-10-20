@@ -16,8 +16,8 @@ import UserServicesPage from './pages/services/UserServices'
 import RequestAppointment from './pages/offers/RequestAppointment'
 import ConfirmAppointment from './pages/offers/ConfirmAppointment'
 
-import ReceivedCollaborationsPage from './pages/collaborations/ReceivedCollaborations'
-import CollaborationDetailPage from './pages/collaborations/CollaborationDetail'
+import ReceivedCollaborationsPage from './components/collaborations/ReceivedCollaborations'
+import CollaborationDetailPage from './components/collaborations/CollaborationDetail'
 
 const Routes = () => 
   <Switch>

@@ -1,3 +1,9 @@
+.timer {
+    font-size: 34px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
 .root {
     text-align: center;
     flex-direction: column;
@@ -194,7 +200,7 @@
 .viewBoard {
     display: flex;
     flex: 1;
-    max-height: 90vh;
+    max-height: 75vh;
 }
 
 
@@ -219,6 +225,17 @@
     flex-direction: row;
 }
 
+.headerChatUser {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerChatButton {
+    display: flex;
+}
+
 .textHeaderChatBoard {
     font-weight: bold;
     color: #203152;
@@ -230,8 +247,7 @@
     flex: 1;
     flex-direction: column;
     overflow-y: scroll;
-    padding-top: 10px;
-    padding-bottom: 20px;
+    padding: 10px 20px 20px 20px;
 }
 
 .viewListContentChat::-webkit-scrollbar-track {
@@ -249,12 +265,14 @@
 }
 
 .viewBottom {
+    padding-top: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
     height: 50px;
     border-top: 1px solid #e8e8e8;
+    padding-right: 20px;
 }
 
 .icOpenGallery {
@@ -358,7 +376,14 @@ input::placeholder {
     align-self: flex-start;
     margin-left: 20px;
     margin-top: 10px;
-    margin-bottom: -15px;
+}
+
+.viewWrapItemRight {
+    width: 300px;
+    text-align: left;
+    align-self: flex-end;
+    margin-left: 20px;
+    margin-top: 10px;
 }
 
 .viewWrapItemLeft2 {
@@ -373,8 +398,13 @@ input::placeholder {
 .viewWrapItemLeft3 {
     flex-direction: row;
     display: flex;
-    width: 340px;
-    margin-bottom: -15px;
+    width: 300px;
+}
+
+.viewWrapItemRight3 {
+    flex-direction: row;
+    display: flex;
+    width: 300px;
 }
 
 .viewItemLeft {
@@ -418,7 +448,6 @@ input::placeholder {
     height: 30px;
     border-radius: 15px;
     margin-right: 10px;
-    margin-bottom: 10px;
     object-fit: cover;
     align-self: flex-end;
 }
@@ -432,10 +461,6 @@ input::placeholder {
 .textContentItem {
     font-size: 14px;
     word-break: break-all;
-}
-
-.viewListContentChat div:last-child {
-    margin-bottom: 10px;
 }
 
 /* Item image */
