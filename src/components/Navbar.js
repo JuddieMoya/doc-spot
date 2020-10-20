@@ -81,6 +81,11 @@ const Navbar = props => {
               className="navbar-item is-secondary">
                Profile
             </Link>
+            <Link 
+              to="/Services" 
+              className="navbar-item is-secondary">
+               Services
+            </Link>
             { isAuth &&
               <React.Fragment>
                 <div className="navbar-item has-dropdown is-hoverable">
@@ -101,12 +106,12 @@ const Navbar = props => {
                     <Link 
                       to="/offers/sent"
                       className="navbar-item">
-                        Sent Offers
+                        Requested Appointments
                     </Link>
                     <Link 
                       to="/offers/received"
                       className="navbar-item">
-                        Received Offers
+                        Confirmed Appointments
                     </Link>
                     <Link 
                       to="/collaborations/me"

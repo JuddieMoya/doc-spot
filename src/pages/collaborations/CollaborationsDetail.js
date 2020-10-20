@@ -135,7 +135,7 @@ class CollaborationDetail extends React.Component {
                     <div className="headerChatButton">
                       <button 
                         onClick={() => this.onStartCollaboration(collaboration)}
-                        className="button is-success">Start Collaboration</button>
+                        className="button is-success">Started</button>
                     </div>
                   }
                   { status === 'active' &&
@@ -145,7 +145,7 @@ class CollaborationDetail extends React.Component {
                   }
                   { status === 'finished' &&
                     <span className="tag is-warning is-large"> 
-                      Collaboration has been finished
+                     finished
                     </span>
                   }
                 </div>

@@ -35,9 +35,9 @@ class ReceivedOffers extends React.Component {
     return (
       <div className="container">
         <div className="content-wrapper">
-          <h1 className="title">Received Offers</h1>
+          <h1 className="title">Appointments Confirmed</h1>
           { !isFetching && offers.length === 0 &&
-            <span className="tag is-warning is-large">You don't have any received offers :(</span>
+            <span className="tag is-warning is-large">You don't have any confirmed Appointments :(</span>
           }
           <div className="columns">
             { offers.map(offer => (
