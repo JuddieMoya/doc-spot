@@ -1,4 +1,3 @@
-
 import React from 'react'
 import withAuthorization from 'components/hoc/withAuthorization'
 import { withToastManager } from 'react-toast-notifications';
@@ -6,6 +5,8 @@ import ServiceItem from 'components/service/ServiceItem'
 import { connect } from 'react-redux'
 import { newMessage, newCollaboration } from 'helpers/offers'
 import { fetchSentOffers, collaborate } from 'actions'
+
+import Spinner from 'components/Spinner'
 
 class SentOffers extends React.Component {
 
@@ -29,11 +30,17 @@ class SentOffers extends React.Component {
   } 
 
   render() {
-    const { offers } = this.props
+    const { offers, isFetching } = this.props
+
+    if (isFetching) { return <Spinner />}
+
     return (
       <div className="container">
         <div className="content-wrapper">
-          <h1 className="title">Sent Offers</h1>
+          <h1 className="title">Appointment Resquest</h1>
+          { !isFetching && offers.length === 0 &&
+            <span className="tag is-warning is-large">You don't have any Appointment Resquest :(</span>
+          }
           <div className="columns">
             { offers.map(offer => (
               <div 
@@ -80,9 +87,15 @@ class SentOffers extends React.Component {
   }
 }
 
-const mapStateToProps = ({offers}) => ({ offers: offers.sent })
+const mapStateToProps = ({offers}) => ({ offers: offers.sent, isFetching: offers.isFetching })
 const SentOffersWithToast = withToastManager(SentOffers)
 
 export default 
   withAuthorization(
     connect(mapStateToProps, {collaborate})(SentOffersWithToast))
+
+
+
+
+
+

@@ -2,6 +2,7 @@ import React from 'react'
 import withAuthorization from 'components/hoc/withAuthorization'
 import ServiceItem from 'components/service/ServiceItem'
 import { connect } from 'react-redux'
+import Spinner from 'components/Spinner'
 
 import { fetchReceivedOffers, changeOfferStatus } from 'actions'
 
@@ -27,11 +28,17 @@ class ReceivedOffers extends React.Component {
   }
 
   render() {
-    const { offers } = this.props
+    const { offers, isFetching } = this.props
+
+    if (isFetching) { return <Spinner />}
+
     return (
       <div className="container">
         <div className="content-wrapper">
-          <h1 className="title">Received Offers</h1>
+          <h1 className="title">Appointments Confirmed</h1>
+          { !isFetching && offers.length === 0 &&
+            <span className="tag is-warning is-large">You don't have any confirmed Appointments :(</span>
+          }
           <div className="columns">
             { offers.map(offer => (
               <div 
@@ -81,7 +88,7 @@ class ReceivedOffers extends React.Component {
   }
 }
 
-const mapStateToProps = ({offers}) => ({ offers: offers.received })
+const mapStateToProps = ({offers}) => ({ offers: offers.received, isFetching: offers.isFetching })
 
 const mapDispatchToProps = () => ({
   changeOfferStatus,
@@ -91,13 +98,5 @@ const mapDispatchToProps = () => ({
 export default 
   withAuthorization(
     connect(mapStateToProps, mapDispatchToProps())(ReceivedOffers))
-
-
-
-
-
-
-
-
 
 

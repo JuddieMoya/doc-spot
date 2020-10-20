@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 import {Card, Nav} from 'react-bootstrap'
 import {register as apiRegister} from '../../api/index'
 import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
-
-
 const RegisterForm = (props) => {
   
     const { register, handleSubmit, errors, getValues } = useForm()

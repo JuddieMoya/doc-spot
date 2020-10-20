@@ -1,4 +1,3 @@
-
 import { Timestamp } from 'db'
 
 export const newCollaboration = ({offer: { service, time, toUser, id}, fromUser}) => ({
@@ -11,13 +10,14 @@ export const newCollaboration = ({offer: { service, time, toUser, id}, fromUser}
   toUser: toUser.uid,
   fromUser: fromUser.uid,
   fromOffer: id,
+  status: 'pending',
   createdAt: Timestamp.fromDate(new Date())
 })
 
 export const newMessage = ({offer: { service, toUser }, fromUser}) => ({
   isRead: false,
   type: 'invitation',
-  text: `Hello ${toUser.fullName}, please join collaboration as soon as possible`,
+  text: `Hello ${toUser.fullName}, please join consult as soon as possible`,
   cta: '', // click to action
   toUser: toUser.uid,
   fromUser: {

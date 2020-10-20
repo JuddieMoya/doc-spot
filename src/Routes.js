@@ -13,8 +13,11 @@ import RegisterPage from './pages/Register'
 import ServiceCreatePage from './pages/services/ServiceCreate'
 import UserServicesPage from './pages/services/UserServices'
 
-import SentOffersPage from './pages/offers/SentOffers'
-import ReceivedOffersPage from './pages/offers/ReceivedOffers'
+import ReceivedOffers from './pages/offers/ReceivedOffers'
+import SentOffers from './pages/offers/SentOffer'
+
+import ReceivedCollaborationsPage from './components/collaborations/ReceivedCollaborations'
+import CollaborationDetailPage from './components/collaborations/CollaborationDetail'
 
 const Routes = () => 
   <Switch>
@@ -26,11 +29,17 @@ const Routes = () =>
     <Route path="/login">
       <LoginPage />
     </Route>
-    <Route path="/offers/sent">
-      <SentOffersPage />
+    <Route path="/collaborations/me">
+      <ReceivedCollaborationsPage />
     </Route>
-    <Route path="/offers/received">
-      <ReceivedOffersPage />
+    <Route path="/collaborations/:id">
+      <CollaborationDetailPage />
+    </Route>
+    <Route path="/offers/sent">
+      <SentOffers/>
+    </Route>
+    <Route path="/offers/Received">
+      <ReceivedOffers />
     </Route>
     <Route path="/services/me">
       <UserServicesPage />
