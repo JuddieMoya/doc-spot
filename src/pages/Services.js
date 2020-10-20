@@ -6,7 +6,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button'
+// import Button from '@material-ui/core/Button';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -63,7 +63,7 @@ function Services() {
     <div>
     <h1>Find a Physician!</h1>
     <TextField id="outlined-basic" label="Search Here" variant="outlined"/>
-    <Button>Search</Button>
+    {/* <Button>Search</Button> */}
       <GoogleMap
         mapContainerStyle={containerStyle}
         zoom={8}

@@ -2,7 +2,7 @@ import React from 'react'
 import withAuthorization from 'components/hoc/withAuthorization'
 import ServiceItem from 'components/service/ServiceItem'
 
-import { fetchUserServices } from 'actions'
+import { fetchUserServices } from '../../actions/services'
 
 class UserServices extends React.Component {
 

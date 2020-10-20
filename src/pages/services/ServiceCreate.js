@@ -8,13 +8,17 @@ import { fetchUserServices } from 'actions'
 class UserServices extends React.Component {
 
   componentDidMount() {
-    const { auth: { user }, dispatch } = this.props
+    return;
+    const { auth: { user }, dispatch } = this.props;
+    console.log({user, dispatch})
     dispatch(fetchUserServices(user.uid))
   }
 
 
   render() {
-    const { services } = this.props
+    const { services } = this.props;
+
+    return null;
     return (
       <div className="container">
         <div className="content-wrapper">
@@ -35,10 +39,15 @@ class UserServices extends React.Component {
   }
 }
 
-const mapDispatchToProps = ({user}) => ({services: user.services})
+const mapStateToProps = (state) => {
+
+  console.log({state});
+  return {}
+
+}
 
 
-export default withAuthorization(connect(mapDispatchToProps)(UserServices))
+export default withAuthorization(connect(mapStateToProps)(UserServices))
 
 
 
