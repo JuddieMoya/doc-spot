@@ -1,0 +1,128 @@
+[debug] [2020-10-20T13:19:15.758Z] ----------------------------------------------------------------------
+[debug] [2020-10-20T13:19:15.760Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2020-10-20T13:19:15.760Z] CLI Version:   8.12.1
+[debug] [2020-10-20T13:19:15.760Z] Platform:      darwin
+[debug] [2020-10-20T13:19:15.761Z] Node Version:  v12.18.3
+[debug] [2020-10-20T13:19:15.762Z] Time:          Tue Oct 20 2020 09:19:15 GMT-0400 (Eastern Daylight Time)
+[debug] [2020-10-20T13:19:15.762Z] ----------------------------------------------------------------------
+[debug] [2020-10-20T13:19:15.762Z] 
+[debug] [2020-10-20T13:19:15.772Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-10-20T13:19:15.772Z] > authorizing via signed-in user
+[debug] [2020-10-20T13:19:15.772Z] [iam] checking project docspot1-29088 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2020-10-20T13:19:15.775Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-10-20T13:19:15.775Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-10-20T13:19:15.937Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","date":"Tue, 20 Oct 2020 13:19:17 GMT","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:19:15.956Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/docspot1-29088:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2020-10-20T13:19:16.218Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:17 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=141","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:19:16.220Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/docspot1-29088/serviceAccounts/docspot1-29088@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2020-10-20T13:19:16.411Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:18 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'docspot1-29088'...
+[info] 
+[info] i  deploying functions 
+[info] Running command: npm --prefix "$RESOURCE_DIR" run lint
+[info] ✔  functions: Finished running predeploy script. 
+[debug] [2020-10-20T13:19:22.532Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "10"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^9.2.0",
+    "firebase-functions": "^3.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "firebase-functions-test": "^0.1.6"
+  },
+  "private": true
+}
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2020-10-20T13:19:23.958Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/docspot1-29088/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2020-10-20T13:19:23.958Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/docspot1-29088/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2020-10-20T13:19:23.958Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/docspot1-29088/services/cloudbuild.googleapis.com  
+ 
+[debug] [2020-10-20T13:19:24.232Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:25 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2020-10-20T13:19:24.234Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:25 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:19:24.251Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:25 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2020-10-20T13:19:24.252Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/docspot1-29088/adminSdkConfig  
+ 
+[debug] [2020-10-20T13:19:24.939Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: preparing functions directory for uploading... 
+[debug] [2020-10-20T13:19:24.941Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/docspot1-29088/configs  
+ 
+[debug] [2020-10-20T13:19:25.246Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:26 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: packaged functions (37.74 KB) for uploading 
+[debug] [2020-10-20T13:19:25.873Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/docspot1-29088/locations/-/functions  
+ 
+[debug] [2020-10-20T13:19:26.476Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:28 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:19:26.478Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/docspot1-29088/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2020-10-20T13:19:27.399Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:19:28 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:19:27.399Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-7276081e-571a-4e20-a9ae-4f7b76397d3a/7c613fe7-bf3e-4560-a440-606c5fbc3313.zip?GoogleAccessId=service-871868432247@gcf-admin-robot.iam.gserviceaccount.com&Expires=1603201768&Signature=Puwqjh15h9f9ytn3XcKn6LOscsAc9z9o5U952x9CNDqSyuRjFl6%2FikGfaXxr6d4ebem%2BAieLOSZKB%2BGmFcJuVcaN9%2Bchyeyrzlxad%2Bg7L%2BT1iwdxyscQUL39n9bmu1EsQVToLy2jZ0N3%2BNO3UAzkQw94J8cT7ZHQle50okjj0k1V2qQeACbNccv7zloN0lAreNmtBO8VrvkZNvKt41XUtzBCoAT4x%2BnIolj31M2b3BJ%2FmFEb6DNffcBby0Z8dzKdANkGwlT9PIwAHeADnz46uE12K0LcWvru5tdkmTIVfi3NG25ieS%2BrH8DyhC4Rm%2Bobu8aGfgiWQQjFVZKT3Nx8xg%3D%3D  
+ <request body omitted>
+[debug] [2020-10-20T13:19:28.932Z] <<< HTTP RESPONSE 200 {"x-guploader-uploadid":"ABg5-UxxSffk-PbVFfmsOMwZwAneJzArZ2b8R9CxhLig1u6KheLDodh7GdiOvnhhk7yVWZIVdf8kF-Gzm5O0f2Ly9l4O9-0MaA","etag":"\"6de73d8a78bf07a5cba75d2cb1946f86\"","x-goog-generation":"1603199970413871","x-goog-metageneration":"1","x-goog-hash":"crc32c=siyIrQ==, md5=bec9ini/B6XLp10ssZRvhg==","x-goog-stored-content-length":"38646","x-goog-stored-content-encoding":"identity","vary":"Origin","content-length":"0","date":"Tue, 20 Oct 2020 13:19:30 GMT","server":"UploadServer","content-type":"text/html; charset=UTF-8","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""}
+[info] ✔  functions: functions folder uploaded successfully 
+[info] i  functions: creating Node.js 10 function onUserStatusChanged(us-central1)... 
+[debug] [2020-10-20T13:19:28.935Z] Trigger is:  {"eventTrigger":{"resource":"projects/_/instances/docspot1-29088/refs/status/{uid}","eventType":"providers/google.firebase.database/eventTypes/ref.update","service":"firebaseio.com"}}
+[info] 
+The following functions are found in your project but do not exist in your local source code:
+	addMessage(us-central1)
+
+If you are renaming a function or changing its region, it is recommended that you create the new function first before deleting the old one to prevent event loss. For more info, visit https://firebase.google.com/docs/functions/manage-functions#modify
+
+[info] i  functions: continuing with other deployments. 
+[debug] [2020-10-20T13:22:42.792Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/docspot1-29088/locations/us-central1/functions  
+ {"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-7276081e-571a-4e20-a9ae-4f7b76397d3a/7c613fe7-bf3e-4560-a440-606c5fbc3313.zip?GoogleAccessId=service-871868432247@gcf-admin-robot.iam.gserviceaccount.com&Expires=1603201768&Signature=Puwqjh15h9f9ytn3XcKn6LOscsAc9z9o5U952x9CNDqSyuRjFl6%2FikGfaXxr6d4ebem%2BAieLOSZKB%2BGmFcJuVcaN9%2Bchyeyrzlxad%2Bg7L%2BT1iwdxyscQUL39n9bmu1EsQVToLy2jZ0N3%2BNO3UAzkQw94J8cT7ZHQle50okjj0k1V2qQeACbNccv7zloN0lAreNmtBO8VrvkZNvKt41XUtzBCoAT4x%2BnIolj31M2b3BJ%2FmFEb6DNffcBby0Z8dzKdANkGwlT9PIwAHeADnz46uE12K0LcWvru5tdkmTIVfi3NG25ieS%2BrH8DyhC4Rm%2Bobu8aGfgiWQQjFVZKT3Nx8xg%3D%3D","name":"projects/docspot1-29088/locations/us-central1/functions/onUserStatusChanged","entryPoint":"onUserStatusChanged","labels":{"deployment-tool":"cli-firebase"},"runtime":"nodejs10","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"docspot1-29088\",\"databaseURL\":\"https://docspot1-29088.firebaseio.com\",\"storageBucket\":\"docspot1-29088.appspot.com\",\"locationId\":\"us-west3\"}"},"eventTrigger":{"resource":"projects/_/instances/docspot1-29088/refs/status/{uid}","eventType":"providers/google.firebase.database/eventTypes/ref.update","service":"firebaseio.com"}}
+[debug] [2020-10-20T13:22:43.696Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:22:45 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:22:43.698Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:22:43.901Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:22:45 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:22:45.905Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:22:46.461Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:22:47 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:22:48.467Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:22:48.701Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:22:50 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:22:50.707Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:22:51.068Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:22:52 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:22:53.075Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:22:53.284Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:22:54 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:22:55.289Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:22:55.498Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:22:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:22:57.505Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:22:57.706Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:22:59 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:22:59.712Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:22:59.925Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:23:01 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:23:01.931Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:23:02.435Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:23:03 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:23:04.439Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 
+[debug] [2020-10-20T13:23:04.648Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 20 Oct 2020 13:23:06 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-27=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-T050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-10-20T13:23:06.655Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/operations/ZG9jc3BvdDEtMjkwODgvdXMtY2VudHJhbDEvb25Vc2VyU3RhdHVzQ2hhbmdlZC9OVVFLZlgyVDhKWQ  
+ 

@@ -12,9 +12,9 @@ const Hero = () =>
             </h1>
             <h2 className="subtitle is-5 is-muted"> A better you for a better tommorrow </h2>
             <p>
-              <a className="button cta rounded primary-btn raised">
+              <button className="button cta rounded primary-btn raised">
                   A Healthier You Starts Today Get Started
-              </a>
+              </button>
             </p>
           </div>
           <div className="column is-5 is-offset-1">
