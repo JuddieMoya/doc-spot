@@ -3,7 +3,7 @@ Todo: See KapstonePitch.md
 ## Project Requirements
 Once your project has been completed please fill out the links below. These are a part of the rubric and must be completed before the submission deadline
 **[Scrum Board URL](https://trello.com/b/PzJmwKYS/kapstone-n)** |
-**[Deployment URL](https://gitlab.com/ruthhall97/docspot2)** |
+**[Deployment URL](https://vercel.com/import/success?name=docspot2&deploymentUrl=docspot2-qjb6phujy.vercel.app)** |
 **[Kapstone Pitch URL](https://docs.google.com/document/d/1gCBDkYZIhjxQlbeisfhoKR2vdcPzcPLxbw-HOxIqYm4/edit)** |
 **[Group Retrospective Document URL](https://docs.google.com/document/d/1DOzBdtyBV55OVTEADneppjlqpWDrrbQSPI-T42W0bvc/edit?usp=sharing)** |
 **[Kapstone Feedback Form](https://docs.google.com/forms/d/1yeIyQH6ZE6y5Z0qB2i8yW5_1Gzfxs8YiJsNlcyjR0WA/edit)**
