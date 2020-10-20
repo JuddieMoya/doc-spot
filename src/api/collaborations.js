@@ -1,4 +1,3 @@
-
 import firebase from 'firebase/app'
 import db from 'db'
 import { createRef } from './index'
@@ -88,3 +87,24 @@ export const subToMessages = (collabId, done) =>
     .doc(collabId)
     .collection('messages')
     .onSnapshot(snapshot => done(snapshot.docChanges()))
+
+
+export const startCollaboration = (collabId, expiresAt) =>
+  db.collection('collaborations')
+    .doc(collabId)
+    .update({expiresAt})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

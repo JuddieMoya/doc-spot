@@ -1,4 +1,8 @@
-import { FETCH_OFFERS_SUCCESS, CHANGE_OFFER_STATUS } from 'types'
+import { 
+  FETCH_OFFERS_SUCCESS, 
+  CHANGE_OFFER_STATUS,
+  REQUEST_RESOURCE,
+  FETCH_RESOURCE_SUCCESS } from 'types'
 
 import * as api from 'api'
 
@@ -19,25 +23,30 @@ const extractDataFromOffer = async (offer, userType) => {
 
 
 export const fetchSentOffers = userId => dispatch => {
+  dispatch({type: REQUEST_RESOURCE, resource: 'offers'})
   return api
     .fetchSentOffers(userId)
     .then(async offers => {
-      // const mappedOffers = await Promise.all(
-      //   offers.map(offer => extractDataFromOffer(offer, 'toUser'))
-      // )
+      const mappedOffers = await Promise.all(
+        offers.map(offer => extractDataFromOffer(offer, 'toUser'))
+      )
 
-      // dispatch({type: FETCH_OFFERS_SUCCESS, offers: mappedOffers, offersType: 'sent'})
-      // return mappedOffers
+      dispatch({type: FETCH_RESOURCE_SUCCESS, resource: 'offers'})
+      dispatch({type: FETCH_OFFERS_SUCCESS, offers: mappedOffers, offersType: 'sent'})
+      return mappedOffers
     })
 }
 
 export const fetchReceivedOffers = userId => dispatch => {
+  dispatch({type: REQUEST_RESOURCE, resource: 'offers'})
   return api
     .fetchReceivedOffers(userId)
     .then(async offers => {
       const mappedOffers = await Promise.all(
         offers.map(offer => extractDataFromOffer(offer, 'fromUser'))
       )
+
+      dispatch({type: FETCH_RESOURCE_SUCCESS, resource: 'offers'})
       dispatch({type: FETCH_OFFERS_SUCCESS, offers: mappedOffers, offersType: 'received'})
       return mappedOffers
     })
@@ -56,7 +65,6 @@ export const changeOfferStatus = (offerId, status) => dispatch =>
   api.changeOfferStatus(offerId, status)
     .then(_ => 
       dispatch({type: CHANGE_OFFER_STATUS, offerId, status, offersType: 'received'})) 
-
 
 
 

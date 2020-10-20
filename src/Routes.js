@@ -13,8 +13,8 @@ import RegisterPage from './pages/Register'
 import ServiceCreatePage from './pages/services/ServiceCreate'
 import UserServicesPage from './pages/services/UserServices'
 
-import RequestAppointment from './pages/offers/RequestAppointment'
-import ConfirmAppointment from './pages/offers/ConfirmAppointment'
+import ReceivedOffers from './pages/offers/ReceivedOffers'
+import SentOffers from './pages/offers/SentOffer'
 
 import ReceivedCollaborationsPage from './components/collaborations/ReceivedCollaborations'
 import CollaborationDetailPage from './components/collaborations/CollaborationDetail'
@@ -35,11 +35,11 @@ const Routes = () =>
     <Route path="/collaborations/:id">
       <CollaborationDetailPage />
     </Route>
-    <Route path="/appointment/Request">
-      <RequestAppointment />
+    <Route path="/offers/sent">
+      <SentOffers/>
     </Route>
-    <Route path="/appointment/confirmed">
-      <ConfirmAppointment />
+    <Route path="/offers/Received">
+      <ReceivedOffers />
     </Route>
     <Route path="/services/me">
       <UserServicesPage />

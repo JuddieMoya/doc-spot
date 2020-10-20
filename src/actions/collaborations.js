@@ -75,9 +75,5 @@ export const subToMessages = collabId => dispatch => {
 }
 
 
-
-
-
-
-
-
+export const startCollaboration = (collabId, expiresAt) => 
+  api.startCollaboration(collabId, expiresAt)

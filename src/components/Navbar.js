@@ -1,3 +1,5 @@
+/* eslint jsx-a11y/anchor-is-valid: 0 */
+
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import ReceivedMessages from './ReceivedMessages'
@@ -28,7 +30,7 @@ const Navbar = props => {
           <Link 
             to="/"
             className="navbar-item">
-             <div className="title">Docspot</div>
+             <div className="title">DocSpot</div>
           </Link>
 
           <a className="navbar-item is-hidden-desktop is-hidden-tablet">
@@ -64,7 +66,7 @@ const Navbar = props => {
           </div>
 
           <div className="navbar-end">
-            { user &&
+            { user.uid &&
               <div className="navbar-item is-secondary user-welcome">
                 {`Hi ${user.fullName}`}
               </div>
@@ -73,11 +75,6 @@ const Navbar = props => {
               to="/" 
               className="navbar-item is-secondary">
                 Home
-            </Link>
-            <Link 
-              to="/services" 
-              className="navbar-item is-secondary">
-                Services
             </Link>
             <Link 
               to="/Profile" 
@@ -102,20 +99,19 @@ const Navbar = props => {
                         Your Services
                     </Link>
                     <Link 
-                      to="/appointment/Request"
+                      to="/offers/sent"
                       className="navbar-item">
-                       Request appointment
+                        Sent Offers
                     </Link>
                     <Link 
-                      to="/appointment/confirmed"
+                      to="/offers/received"
                       className="navbar-item">
-                        confirm appointment
+                        Received Offers
                     </Link>
                     <Link 
                       to="/collaborations/me"
                       className="navbar-item">
-                        Received Appointments
-                        
+                        Received Collaborations
                     </Link>
                   </div>
                 </div>
@@ -159,13 +155,6 @@ const Navbar = props => {
       </div>
     </nav>
   )
-}
-
-const mapStateToProps = (state) => {
-  console.log(state)
-  return {
-    auth: state.firebase.auth
-  }
 }
 
 export default Navbar

@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import withAuthorization from 'components/hoc/withAuthorization'
 import { withRouter } from 'react-router-dom'
+import { Timestamp } from 'db'
 import moment from 'moment'
 import { 
   subToCollaboration, 
@@ -9,14 +10,18 @@ import {
   leaveCollaboration,
   subToProfile,
   sendChatMessage,
-  subToMessages } from 'actions'
+  subToMessages,
+  startCollaboration } from 'actions'
 import JoinedPeople from 'components/collaboration/JoinedPeople'
 import ChatMessages from 'components/collaboration/ChatMessages'
+import Timer from 'components/collaboration/Timer'
+import Spinner from 'components/Spinner'
 
 class CollaborationDetail extends React.Component {
 
   state = {
-    inputValue: ''
+    inputValue: '',
+    reload: false
   }
 
   componentDidMount() {
@@ -71,8 +76,12 @@ class CollaborationDetail extends React.Component {
       .then(_ => this.setState({inputValue: ''}))
   }
 
-  onStartCollaboration = (collaboration) => {
-    alert(`Starting collaboration: ${collaboration.title}`)
+  onStartCollaboration = collaboration => {
+    const { id, time } = collaboration
+    const nowSeconds = Timestamp.now().seconds
+
+    const expiresAt = new Timestamp(nowSeconds + time, 0)
+    startCollaboration(id, expiresAt)
   }
 
   componentWillUnmount() {
@@ -88,10 +97,25 @@ class CollaborationDetail extends React.Component {
     leaveCollaboration(id, user.uid)
   }
 
+  getCollaborationStatus = collaboration => {
+    if (Object.keys(collaboration).length === 0) { return 'loading' }
+
+    if (!collaboration.expiresAt) { return 'notStarted' }
+    if (Timestamp.now().seconds < collaboration.expiresAt.seconds) {
+     return 'active' 
+    } else {
+      return 'finished'
+    }
+  }
+
   render() {
     const { collaboration, joinedPeople, messages } = this.props
     const { inputValue } = this.state
     const { user } = this.props.auth
+
+    const status = this.getCollaborationStatus(collaboration)
+
+    if (status === 'loading') { return <Spinner /> }
 
     return (
        <div className="content-wrapper">
@@ -107,11 +131,23 @@ class CollaborationDetail extends React.Component {
                     <img className="viewAvatarItem" src="https://i.imgur.com/cVDadwb.png" alt="icon avatar" />
                     <span className="textHeaderChatBoard">{user.fullName}</span>
                   </div>
-                  <div className="headerChatButton">
-                    <button 
-                      onClick={() => this.onStartCollaboration(collaboration)}
-                      className="button is-success">Start Collaboration</button>
-                  </div>
+                  { status === 'notStarted' &&
+                    <div className="headerChatButton">
+                      <button 
+                        onClick={() => this.onStartCollaboration(collaboration)}
+                        className="button is-success">Start Collaboration</button>
+                    </div>
+                  }
+                  { status === 'active' &&
+                    <Timer 
+                      seconds={collaboration.expiresAt.seconds - Timestamp.now().seconds}
+                      timeOutCallback={() => this.setState({reload: true})}/>
+                  }
+                  { status === 'finished' &&
+                    <span className="tag is-warning is-large"> 
+                      Collaboration has been finished
+                    </span>
+                  }
                 </div>
                 <div className="viewListContentChat">
                   <ChatMessages 
@@ -123,11 +159,13 @@ class CollaborationDetail extends React.Component {
                   <input 
                     onChange={(e) => this.setState({inputValue: e.target.value})}
                     onKeyPress={this.onKeyboardPress}
+                    disabled={status === 'finished' || status === 'notStarted'}
                     value={inputValue}
                     className="viewInput" 
                     placeholder="Type your message..." />
                   <button 
                     onClick={() => this.onSendMessage(inputValue)}
+                    disabled={status === 'finished' || status === 'notStarted'}
                     className="button is-primary is-large">Send
                   </button>
                 </div>
@@ -156,3 +194,12 @@ const mapStateToProps = ({collaboration}) => {
 
 const Collaboration = withAuthorization(withRouter(CollaborationDetail))
 export default connect(mapStateToProps, mapDispatchToProps())(Collaboration)
+
+
+
+
+
+
+
+
+
