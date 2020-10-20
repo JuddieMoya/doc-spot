@@ -7,31 +7,24 @@ const Profile = ({user}) => {
     const dispatch = useDispatch();
 
     let [userInfo, setUserInfo] = useState(user);
-
-    // const getMyData = async () => {
-    //     let UID = firebase.auth().currentUser.uid;
-    //     userInfo = await getUserProfile(UID);
-    //     console.log("this is the user data", userInfo)
-    //     return userInfo
-    // }
     
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged(function(user) {
-            let currentUser = firebase.auth().currentUser;
-             let name, email, avatar, uid, emailVerified;
-             if (currentUser != null) {
-                 name = user.displayName;
-                 email = user.email;
-                 avatar = user.photoURL;
-                 emailVerified = user.emailVerified;
-                 uid = user.uid;
-               } else {
-                 return null
-             }
-     
-             console.log("emial text", email)
-        });
-    }, [])
+    // useEffect(() => {
+    //     firebase.auth().onAuthStateChanged(function(user) {
+    //         let currentUser = firebase.auth().currentUser;
+    //          let name, email, avatar, uid, emailVerified;
+    //          if (currentUser != null) {
+    //              name = user.displayName;
+    //              email = user.email;
+    //              avatar = user.photoURL;
+    //              emailVerified = user.emailVerified;
+    //              uid = user.uid;
+    //            } else {
+    //              return null
+    //          }
+    
+    //          console.log("emial text", email)
+    //     });
+    // }, [])
 
     firebase.auth().onAuthStateChanged(function(user) {
        let currentUser = firebase.auth().currentUser;
@@ -45,18 +38,12 @@ const Profile = ({user}) => {
           } else {
             return null
         }
-
-        console.log("emial text", email)
+        console.log("emial text", user.displayName)
     });
-    
-    // const handleEdit = () => {
-    //     let toggle = document.getElementById("editUser");
-    //     if(toggle.style.display === "none") {
-    //         toggle.style.display = "block";
-    //     } else {
-    //         toggle.style.display = "none"
-    //     }
-    // }
+    let toggle = true
+    const handleEdit = () => {
+        toggle = !toggle
+    }
 
     const deleteUser =(evt)=> {
         const user = firebase.auth().currentUser;
@@ -84,15 +71,26 @@ const Profile = ({user}) => {
         <>
             <div className="containter">
                 {/* <img src={} alt="avatar"/> */}
-                <h1>Username</h1>
-                {/* <button onClick={handleEdit}>Edit User</button> */}
+                <h1>Eleanor Hall</h1>
+                <button onClick={handleEdit}>Edit User</button>
                 <button type="button" className="" onClick={deleteUser}>Delete User</button>
-                <div id="editUser">
-                    <input />
-                    <input />
-                    <input />
-                </div>
-            </div>    
+                <br />
+                {toggle === false ? [
+                <label for="Dname">Display Name</label>,
+                <br />,
+                <input type="text" name="displayName" />,
+                <br />,
+                <label for="email">Email</label>,
+                <br />,
+                <input type="email" name="email" />,
+                <br />,
+                <label for="password">Password</label>,
+                <br />,
+                <input type="password" name="password" value="RoboKid"/>,
+                <br />,
+                <button>Submit</button>] :
+                null }
+            </div>
         </>
     )
 }
