@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import Modal from 'components/Modal'
 import { useToasts } from 'react-toast-notifications'
 
-import { createRef, createOffer} from 'actions'
-import { FormProvider } from 'react-hook-form'
+import { createRef, createOffer } from 'actions'
 
 const OfferModal = ({service, auth}) => {
 
@@ -12,10 +11,10 @@ const OfferModal = ({service, auth}) => {
     fromUser: '',
     toUser: '',
     service: '',
-    status: 'pending',
+    status: 'pending ',
     price: 0,
     time: 0,
-    note: ''
+    note: 'allow 48hrs to receive response'
   })
 
   const handleChange = ({ target: {value, name}}) => {
@@ -30,10 +29,10 @@ const OfferModal = ({service, auth}) => {
   const handleSubmit = (closeModal) => {
     const offerCopy = { ...offer }
 
-    offerCopy.fromUser = createRef('profiles', auth.user.uid)
+    // offerCopy.fromUser = createRef('profiles', auth.user.uid)
     // offerCopy.toUser = createRef('profiles', service.user.id)
     offerCopy.service = createRef('services', service.id)
-    offerCopy.time = parseInt(offer.time, 300)
+    offerCopy.time = parseInt(offer.time, 10)
 
     createOffer(offerCopy)
       .then(_ => {
@@ -49,29 +48,18 @@ const OfferModal = ({service, auth}) => {
   return (
     <Modal 
       onModalSubmit={handleSubmit}
-      openButtonText="Request an appointment">
+      openButtonText="Book Me">
       <div className="field">
         <input
            onChange={handleChange}
            name="note"
            className="input is-large"
            type="text"
-           placeholder="name"
+           placeholder="Full Name"
            max="5"
            min="0"/>
-        <p className="help"></p>
-      </div>
-     
-      <div className="field">
-        <input
-           onChange={handleChange}
-           name="note"
-           className="input is-large"
-           type="text"
-           placeholder="date requesting appointment"
-           max="5"
-           min="0"/>
-        <p className="help"></p>
+        <p className="help"> </p>
+        
       </div>
       <div className="field">
         <input
@@ -79,10 +67,11 @@ const OfferModal = ({service, auth}) => {
            name="note"
            className="input is-large"
            type="text"
-           placeholder="what kind of doctor do you need?"
+           placeholder="How may I help you?"
            max="5"
            min="0"/>
         <p className="help"></p>
+        
       </div>
       <div className="field">
         <input
@@ -90,13 +79,14 @@ const OfferModal = ({service, auth}) => {
            name="time"
            className="input is-large"
            type="number"
-           placeholder="how many people?"
-/>
-        <p className="help">Co-pay</p>
+           placeholder="How many people will be needing treatment ?"
+           max="5"
+           min="0"/>
+        <p className="help">Co-Pay</p>
       </div>
       <div className="service-price has-text-centered">
         <div className="service-price-title">
-          {service.user && `Uppon acceptance ${service.user.fullName}" will charge you 10 copay:`}
+          {service.user && `Uppon acceptance ${service.user.fullName}" will charge you:`}
         </div>
         <div className="service-price-value">
           <h1 className="title">{offer.price}$</h1>

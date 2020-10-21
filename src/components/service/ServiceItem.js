@@ -35,7 +35,7 @@ const ServiceItem = ({service, children, className, noButton}) => {
           <div className="card-action">
              <Link 
                 to={`/services/${service.id}`}
-                className="button btn-align-md accent-btn raised">Learn More</Link>
+                className="button btn-align-md accent-btn raised">Click Here</Link>
           </div>
         }
       </div>
@@ -46,3 +46,4 @@ const ServiceItem = ({service, children, className, noButton}) => {
 
 
 export default ServiceItem
+

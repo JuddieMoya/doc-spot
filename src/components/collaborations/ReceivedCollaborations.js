@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import withAuthorization from 'components/hoc/withAuthorization'
 import { fetchCollaborations } from 'actions'
 import moment from 'moment'
-
+import ChatMessages from './ChatMessages'
 class ReceivedCollaborations extends React.Component {
 
   state = {
@@ -21,7 +21,7 @@ class ReceivedCollaborations extends React.Component {
     return (
       <div className="content-wrapper">
         <div className="container">
-          <h1 className="title">Collaborations</h1>
+          <h1 className="title">Appointments</h1>
           <div className="box content">
             { collaborations.map(c => (
               <article 

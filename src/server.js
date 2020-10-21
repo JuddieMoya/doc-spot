@@ -1,15 +1,16 @@
-const express = require('express');
-const bodyParser = require('body-parser')
-const path = require('path');
-const app = express();
-app.use(express.static(path.join(__dirname, 'build')));
 
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
+const express = require('express')
+const serveStatic = require('serve-static')
+const path = require('path')
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'build', 'index.html'));
-});
+const app = express()
 
-app.listen(process.env.PORT || 8080);
+
+app.use(serveStatic('build'))
+
+app.get('*', (req, res) => {
+  return res.sendFile(path.resolve('build', 'index.html'))
+})
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`))

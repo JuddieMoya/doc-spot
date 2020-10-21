@@ -20,7 +20,7 @@ const Modal = props => {
         <div className="modal-background"></div>
         <div className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Make an Appointment</p>
+            <p className="modal-card-title"> Schedule an Appointment </p>
             <button 
               onClick={() => changeModalState(false)}
               className="delete" 
