@@ -1,44 +1,122 @@
-import React from 'react'
+import React, { useState } from 'react'
 import withAuthorization from 'components/hoc/withAuthorization'
-import { connect } from 'react-redux'
-import ServiceItem from 'components/service/ServiceItem'
+import { Redirect } from 'react-router-dom'
 
-import { fetchUserServices } from 'actions'
 
-class UserServices extends React.Component {
+import { createService } from 'actions'
 
-  componentDidMount() {
-    const { auth: { user }, dispatch } = this.props
-    dispatch(fetchUserServices(user.uid))
+
+const ServiceCreate = ({auth}) => {
+
+  const [ redirect, setRedirect ] = useState(false)
+  const [ serviceForm, setServiceForm ] = useState({
+    category: 'mathematics',
+    title: '',
+    description: '',
+    image: '',
+    price: null
+  })
+
+  const handleChange = e => {
+    const { name, value } = e.target
+    setServiceForm({...serviceForm, [name]: value})
   }
 
+  const handleSubmit = () => {
+    const { user } = auth
+    createService(serviceForm, user.uid)
+      .then(() => setRedirect(true))
+      .catch(() => alert('SOME ERROR!'))
+  }
 
-  render() {
-    const { services } = this.props
-    return (
+  if (redirect) { return <Redirect to="/" />}
+
+  return (
+    <div className="create-page">
       <div className="container">
-        <div className="content-wrapper">
-          <h1 className="title">Your Services</h1>
-          <div className="columns is-multiline">
-            {
-              services.map(s => (
-                <div key={s.id} className="column">
-                  <ServiceItem service={s} />
+        <div className="form-container">
+          <h1 className="title">Create Service</h1>
+          <form>
+            <div className="field">
+              <label className="label">Category</label>
+              <div className="control">
+                <div className="select">
+                  <select name="category" onChange={handleChange}>
+                   
+                    <option value=" Family physicians">Family physicians</option>
+                    <option value="Dermatologist">Dermatologist</option>
+                   <option value="Allergist Immunologist">Allergist Immunologist</option>
+                    
+                   
+                  </select>
                 </div>
-                )
-              )
-            }
-          </div>
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Title</label>
+              <div className="control">
+                <input
+                  onChange={handleChange}
+                  name="title"
+                  className="input"
+                  type="text"
+                  placeholder="Text input" />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Description</label>
+              <div className="control">
+                <textarea
+                  onChange={handleChange}
+                  name="description"
+                  className="textarea"
+                  placeholder="Textarea"></textarea>
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Image Url</label>
+              <div className="control">
+                <input
+                  onChange={handleChange}
+                  name="image"
+                  className="input"
+                  type="text"
+                  placeholder="Text input" />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Price per Hour</label>
+              <div className="control">
+                <input
+                  onChange={handleChange}
+                  name="price"
+                  className="input"
+                  type="number"
+                  placeholder="Text input" />
+              </div>
+            </div>
+            <div className="field is-grouped">
+              <div className="control">
+                <button
+                  onClick={handleSubmit}
+                  type="button" 
+                  className="button is-link">Create</button>
+              </div>
+              <div className="control">
+                <button className="button is-text">Cancel</button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
-const mapDispatchToProps = ({user}) => ({services: user.services})
+export default withAuthorization(ServiceCreate)
 
 
-export default withAuthorization(connect(mapDispatchToProps)(UserServices))
+
 
 
 

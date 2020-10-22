@@ -1,3 +1,4 @@
+
 import React from 'react'
 import withAuthorization from 'components/hoc/withAuthorization'
 import ServiceItem from 'components/service/ServiceItem'
@@ -12,12 +13,11 @@ class UserServices extends React.Component {
   }
 
   render() {
-    const { services } = this.props.auth.user
-    console.log(services)
+    const { services } = this.props.auth
     return (
       <div className="container">
         <div className="content-wrapper">
-          <h1 className="title">Your Services</h1>
+          <h1 className="title"> Services render</h1>
           <div className="columns is-multiline">
             {
               services.map(s => (
@@ -36,10 +36,3 @@ class UserServices extends React.Component {
 
 
 export default withAuthorization(UserServices)
-
-
-
-
-
-
-

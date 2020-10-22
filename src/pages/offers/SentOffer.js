@@ -1,3 +1,4 @@
+
 import React from 'react'
 import withAuthorization from 'components/hoc/withAuthorization'
 import { withToastManager } from 'react-toast-notifications';
@@ -37,9 +38,9 @@ class SentOffers extends React.Component {
     return (
       <div className="container">
         <div className="content-wrapper">
-          <h1 className="title">Appointment Resquest</h1>
+          <h1 className="title">Appointments Requested </h1>
           { !isFetching && offers.length === 0 &&
-            <span className="tag is-warning is-large">You don't have any Appointment Resquest :(</span>
+            <span className="tag is-warning is-large">You don't have any appointments Confirmed!:(</span>
           }
           <div className="columns">
             { offers.map(offer => (
@@ -47,7 +48,7 @@ class SentOffers extends React.Component {
                 key={offer.id}
                 className="column is-one-third">
                 <ServiceItem
-                  noButton
+                  npButton
                   className="offer-card"
                   service={offer.service}>
                   <div className="tag is-large">
@@ -93,7 +94,6 @@ const SentOffersWithToast = withToastManager(SentOffers)
 export default 
   withAuthorization(
     connect(mapStateToProps, {collaborate})(SentOffersWithToast))
-
 
 
 

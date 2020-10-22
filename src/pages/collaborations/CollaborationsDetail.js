@@ -12,9 +12,9 @@ import {
   sendChatMessage,
   subToMessages,
   startCollaboration } from 'actions'
-import JoinedPeople from 'components/collaboration/JoinedPeople'
-import ChatMessages from 'components/collaboration/ChatMessages'
-import Timer from 'components/collaboration/Timer'
+import JoinedPeople from 'components/collaborations/JoinedPeople'
+import ChatMessages from 'components/collaborations/ChatMessages'
+import Timer from 'components/collaborations/Timer'
 import Spinner from 'components/Spinner'
 
 class CollaborationDetail extends React.Component {
@@ -72,8 +72,12 @@ class CollaborationDetail extends React.Component {
       content: inputValue.trim()
     }
 
-    sendChatMessage({message, collabId: collaboration.id, timestamp})
+    this.props.sendChatMessage({message, collabId: collaboration.id, timestamp})
       .then(_ => this.setState({inputValue: ''}))
+      .catch(error => {
+        // this.setState({inputValue: ''})
+        alert(error)
+      })
   }
 
   onStartCollaboration = collaboration => {
@@ -135,7 +139,7 @@ class CollaborationDetail extends React.Component {
                     <div className="headerChatButton">
                       <button 
                         onClick={() => this.onStartCollaboration(collaboration)}
-                        className="button is-success">Started</button>
+                        className="button is-success">Start Collaboration</button>
                     </div>
                   }
                   { status === 'active' &&
@@ -145,7 +149,7 @@ class CollaborationDetail extends React.Component {
                   }
                   { status === 'finished' &&
                     <span className="tag is-warning is-large"> 
-                     finished
+                      Collaboration has been finished
                     </span>
                   }
                 </div>
@@ -159,13 +163,13 @@ class CollaborationDetail extends React.Component {
                   <input 
                     onChange={(e) => this.setState({inputValue: e.target.value})}
                     onKeyPress={this.onKeyboardPress}
-                    disabled={status === 'finished' || status === 'notStarted'}
+                    // disabled={status === 'finished' || status === 'notStarted'}
                     value={inputValue}
                     className="viewInput" 
                     placeholder="Type your message..." />
                   <button 
                     onClick={() => this.onSendMessage(inputValue)}
-                    disabled={status === 'finished' || status === 'notStarted'}
+                    // disabled={status === 'finished' || status === 'notStarted'}
                     className="button is-primary is-large">Send
                   </button>
                 </div>
@@ -181,7 +185,8 @@ class CollaborationDetail extends React.Component {
 const mapDispatchToProps = () => ({
   subToCollaboration,
   subToProfile,
-  subToMessages
+  subToMessages,
+  sendChatMessage
 })
 
 const mapStateToProps = ({collaboration}) => {
@@ -194,12 +199,5 @@ const mapStateToProps = ({collaboration}) => {
 
 const Collaboration = withAuthorization(withRouter(CollaborationDetail))
 export default connect(mapStateToProps, mapDispatchToProps())(Collaboration)
-
-
-
-
-
-
-
 
 

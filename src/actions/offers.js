@@ -12,11 +12,11 @@ export const createOffer = offer => api.createOffer(offer)
 const extractDataFromOffer = async (offer, userType) => {
 
   const service = await offer.service.get()
-  const user = await offer[userType].get()
+  // const user = await offer[userType].get()
 
   offer.service = service.data()
   offer.service.id = service.id
-  offer[userType] = user.data()
+  // offer[userType] = user.data()
 
   return offer
 }
@@ -65,14 +65,5 @@ export const changeOfferStatus = (offerId, status) => dispatch =>
   api.changeOfferStatus(offerId, status)
     .then(_ => 
       dispatch({type: CHANGE_OFFER_STATUS, offerId, status, offersType: 'received'})) 
-
-
-
-
-
-
-
-
-
 
 

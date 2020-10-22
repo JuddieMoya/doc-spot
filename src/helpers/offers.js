@@ -17,7 +17,7 @@ export const newCollaboration = ({offer: { service, time, toUser, id}, fromUser}
 export const newMessage = ({offer: { service, toUser }, fromUser}) => ({
   isRead: false,
   type: 'invitation',
-  text: `Hello ${toUser.fullName}, please join consult as soon as possible`,
+  text: `Hello ${toUser.fullName}, please join consultation as soon as possible`,
   cta: '', // click to action
   toUser: toUser.uid,
   fromUser: {

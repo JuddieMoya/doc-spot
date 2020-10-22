@@ -41,7 +41,7 @@ const RegisterForm = (props) => {
         </div>
         <div className="field">
           <div className="control">
-            <input ref={register({required: false, validate: {isValidImage, isValidUrl}})}
+            <input ref={register({required: true, validate: {isValidImage, isValidUrl}})}
                   name="avatar"
                   className="input is-large"
                   type="text"

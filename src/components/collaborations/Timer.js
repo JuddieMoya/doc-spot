@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import moment from 'moment' 
 
@@ -22,5 +23,6 @@ const Timer = ({seconds, timeOutCallback}) => {
     </div>
   )
 }
+
 
 export default Timer
