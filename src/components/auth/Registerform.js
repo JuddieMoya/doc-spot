@@ -1,7 +1,5 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from "react-router-dom";
-import {Card, Nav} from 'react-bootstrap'
 import {register as apiRegister} from '../../api/index'
 import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
 const RegisterForm = (props) => {

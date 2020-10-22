@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import firebase from 'firebase/app'
-import { getUserProfile } from '../api/index'
 import { useDispatch } from "react-redux"
 import withAuthorization from 'components/hoc/withAuthorization'
 const Profile = () => {
