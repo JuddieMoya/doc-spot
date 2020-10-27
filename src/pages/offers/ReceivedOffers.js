@@ -1,24 +1,24 @@
+
 import React from 'react'
 import withAuthorization from 'components/hoc/withAuthorization'
 import ServiceItem from 'components/service/ServiceItem'
 import { connect } from 'react-redux'
-import Spinner from 'components/Spinner'
 
-import { fetchReceivedOffers, changeOfferStatus } from 'actions'
+import { fetchReceivedOffers } from 'actions'
 
 class ReceivedOffers extends React.Component {
 
   componentDidMount() {
     const { auth } = this.props
-    this.props.fetchReceivedOffers(auth.user.uid)
+    this.props.dispatch(fetchReceivedOffers(auth.user.uid))
   }
 
-  acceptOffer = offerId => {
-    this.props.changeOfferStatus(offerId, 'accepted')
+  acceptOffer = offer => {
+    console.log(`Accepting ${(offer)}`)
   }
 
-  declineOffer = offerId => {
-    this.props.changeOfferStatus(offerId, 'declined')
+  declineOffer = offer => {
+    console.log(`Declining ${(offer)}`)
   }
 
   statusClass = status => {
@@ -28,17 +28,11 @@ class ReceivedOffers extends React.Component {
   }
 
   render() {
-    const { offers, isFetching } = this.props
-
-    if (isFetching) { return <Spinner />}
-
+    const { offers } = this.props
     return (
       <div className="container">
         <div className="content-wrapper">
-          <h1 className="title">Appointments Confirmed</h1>
-          { !isFetching && offers.length === 0 &&
-            <span className="tag is-warning is-large">You don't have any confirmed Appointments :(</span>
-          }
+          <h1 className="title">Received app.</h1>
           <div className="columns">
             { offers.map(offer => (
               <div 
@@ -70,10 +64,10 @@ class ReceivedOffers extends React.Component {
                     <div>
                       <hr />
                       <button 
-                        onClick={() => this.acceptOffer(offer.id)} 
+                        onClick={() => this.acceptOffer(offer)} 
                         className="button is-success s-m-r">Accept</button>
                       <button 
-                        onClick={() => this.declineOffer(offer.id)} 
+                        onClick={() => this.declineOffer(offer)} 
                         className="button is-danger">Decline</button>
                     </div>
                   }
@@ -88,15 +82,16 @@ class ReceivedOffers extends React.Component {
   }
 }
 
-const mapStateToProps = ({offers}) => ({ offers: offers.received, isFetching: offers.isFetching })
-
-const mapDispatchToProps = () => ({
-  changeOfferStatus,
-  fetchReceivedOffers
-})
+const mapStateToProps = ({offers}) => ({ offers: offers.received })
 
 export default 
   withAuthorization(
-    connect(mapStateToProps, mapDispatchToProps())(ReceivedOffers))
+    connect(mapStateToProps)(ReceivedOffers))
+
+
+
+
+
+
 
 

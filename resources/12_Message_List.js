@@ -5,9 +5,9 @@
   <hr />
   <div className="navbar-item">
     <div>
-      Hello  Dr.FJerga, I would like to make an appointment with you
+      Hello  Dr.FJerga, I would like to make an appointment with you asap
     </div>
-    <Link onClick={() => {}} to='/collaborations/dsada99786967'>
+    <Link onClick={() => {}} to='/collaborations//collaboration /rdWaRcHAi2UVFCfXVD4C'>
       <div className="button is-success">Join</div>
     </Link>
     <button

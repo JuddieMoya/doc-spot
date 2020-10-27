@@ -1,7 +1,5 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from "react-router-dom";
-import {Card, Nav} from 'react-bootstrap'
 import {register as apiRegister} from '../../api/index'
 import { isValidImage, isValidUrl, sameAs } from 'helpers/Validators'
 const RegisterForm = (props) => {
@@ -43,7 +41,7 @@ const RegisterForm = (props) => {
         </div>
         <div className="field">
           <div className="control">
-            <input ref={register({required: false, validate: {isValidImage, isValidUrl}})}
+            <input ref={register({required: true, validate: {isValidImage, isValidUrl}})}
                   name="avatar"
                   className="input is-large"
                   type="text"
